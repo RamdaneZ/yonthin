@@ -62,7 +62,7 @@
         </div>
     </div>
 
-    <div class="cantact-area6 position-relative overflow-hidden" data-bg-src="{{ asset('about-img.jpg') }}">
+    <div class="cantact-area6 position-relative overflow-hidden" data-bg-src="{{ asset('about-img.webp') }}">
         <div class="container">
             <div class="row gy-4 justify-content-between align-items-center">
                 <div class="col-lg-6">
