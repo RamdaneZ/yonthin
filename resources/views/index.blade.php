@@ -30,9 +30,9 @@
                     </div>
                 @endforeach
             </div>
-        </div><button data-slider-prev="#heroSlide12" class="slider-arrow slider-prev"><img
+        </div><button data-slider-prev="#heroSlide12" class="slider-arrow slider-prev"><img loading="lazy"
                 src="assets/img/icon/right-arrow2.svg" alt=""></button> <button data-slider-next="#heroSlide12"
-            class="slider-arrow slider-next"><img src="assets/img/icon/left-arrow2.svg" alt=""></button>
+            class="slider-arrow slider-next"><img loading="lazy" src="assets/img/icon/left-arrow2.svg" alt=""></button>
     </div>
 
     <div class="destination-area13 position-relative overflow-hidden space-top">
@@ -47,7 +47,7 @@
                         <div class="swiper-slide">
                             <div class="category-card single">
                                 <div class="box-img global-img">
-                                    <img src="{{asset('categories/'.$category->image)}}" alt="{{ App::getLocale() === 'ar' ? $category->name_ar : (App::getLocale() === 'fr' ? $category->name_fr : $category->name_en) }}">
+                                    <img loading="lazy" src="{{asset('categories/'.$category->image)}}" loading="lazy" alt="{{ App::getLocale() === 'ar' ? $category->name_ar : (App::getLocale() === 'fr' ? $category->name_fr : $category->name_en) }}">
                                 </div>
                                 <h3 class="box-title">
                                     <a href="{{ url('category/'.$category->slug) }}">{{ App::getLocale() === 'ar' ? $category->name_ar : (App::getLocale() === 'fr' ? $category->name_fr : $category->name_en) }}</a>
