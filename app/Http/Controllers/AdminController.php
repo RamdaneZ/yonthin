@@ -12,6 +12,9 @@ use App\Models\Slider;
 use App\Models\User;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Http\Request;
+use Intervention\Image\ImageManager;
+use Intervention\Image\Drivers\Gd\Driver;
+use Illuminate\Support\Facades\Storage;
 
 class AdminController extends Controller
 {
@@ -102,8 +105,7 @@ class AdminController extends Controller
         return view('admin.homepage.index')->with(['sliders'=>$sliders]);
     }
 
-    public function homepage_store(Request $request)
-    {
+    public function homepage_store(Request $request){
         $request->validate([
             'title_ar' => ['nullable', 'string', 'max:255'],
             'title_fr' => ['nullable', 'string', 'max:255'],
@@ -120,10 +122,20 @@ class AdminController extends Controller
     
         $fileName = null;
     
-        if ($request->image != null) {
-            $fileName = time() . "." . $request->file('image')->getClientOriginalExtension();
-            // Store the image directly in the public folder
-            $request->file('image')->move(public_path('sliders'), $fileName);
+        if ($request->hasFile('image')) {
+            $image = $request->file('image');
+        
+            // Generate a unique WebP file name
+            $fileName = time() . ".webp";
+        
+            // Create an instance of ImageManager with GD driver
+            $manager = new ImageManager(new Driver());
+        
+            // Convert and encode the image to WebP format
+            $encoded = $manager->read($image->getPathname())->toWebp(60);
+        
+            // Save the WebP image in the storage/public/sliders directory
+            Storage::disk('public')->put('sliders/' . $fileName, $encoded->toString()); 
         }
     
         Slider::create([
@@ -143,13 +155,11 @@ class AdminController extends Controller
         return back()->with('success', 'Slider créé avec succès');
     }
     
-
     public function homepage_edit(Slider $slider){
         return view('admin.homepage.edit')->with('slider',$slider);
     }
 
-    public function homepage_update(Request $request, Slider $slider)
-    {
+    public function homepage_update(Request $request, Slider $slider){
         $request->validate([
             'title_ar' => ['nullable', 'string', 'max:255'],
             'title_fr' => ['nullable', 'string', 'max:255'],
@@ -168,15 +178,24 @@ class AdminController extends Controller
         $fileName = $slider->image;
     
         // Check if a new image is uploaded
-        if ($request->image) {
-            // Generate a new filename
-            $fileName = time() . "." . $request->file('image')->getClientOriginalExtension();
-            // Move the new image to the public/sliders directory
-            $request->file('image')->move(public_path('sliders'), $fileName);
-            
-            // Optionally, delete the old image if it exists
-            if ($slider->image && file_exists(public_path('sliders/' . $slider->image))) {
-                unlink(public_path('sliders/' . $slider->image));
+        if ($request->hasFile('image')) {
+            $image = $request->file('image');
+    
+            // Generate a new WebP filename
+            $fileName = time() . ".webp";
+    
+            // Create an instance of ImageManager with GD driver
+            $manager = new ImageManager(new Driver());
+    
+            // Convert and encode the image to WebP format
+            $encoded = $manager->read($image->getPathname())->toWebp(60);
+    
+            // Save WebP image in storage/app/public/sliders
+            Storage::disk('public')->put('sliders/' . $fileName, $encoded->toString());
+    
+            // Delete old image if it exists
+            if ($slider->image && Storage::disk('public')->exists('sliders/' . $slider->image)) {
+                Storage::disk('public')->delete('sliders/' . $slider->image);
             }
         }
     
@@ -187,7 +206,7 @@ class AdminController extends Controller
             'subtitle_ar' => $request->subtitle_ar,
             'subtitle_fr' => $request->subtitle_fr,
             'subtitle_en' => $request->subtitle_en,
-            'image' => $fileName,
+            'image' => $fileName, // Store only the filename
             'btnText_ar' => $request->btnText_ar,
             'btnText_fr' => $request->btnText_fr,
             'btnText_en' => $request->btnText_en,

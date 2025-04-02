@@ -8,7 +8,7 @@
                 @foreach($sliders as $slider)
                     <div class="swiper-slide">
                         <div class="hero-inner">
-                            <div class="th-hero-bg" data-bg-src="{{ asset('sliders/'.$slider->image) }}"></div>
+                            <div class="th-hero-bg" data-bg-src="{{ asset('storage/sliders/'.$slider->image) }}"></div>
                             <div class="container">
                                 <div class="hero-style12">
                                     <h1 class="hero-title text-white" data-ani="slideinup" data-ani-delay="0.4s">
@@ -47,7 +47,7 @@
                         <div class="swiper-slide">
                             <div class="category-card single">
                                 <div class="box-img global-img">
-                                    <img loading="lazy" src="{{asset('categories/'.$category->image)}}" loading="lazy" alt="{{ App::getLocale() === 'ar' ? $category->name_ar : (App::getLocale() === 'fr' ? $category->name_fr : $category->name_en) }}">
+                                    <img loading="lazy" src="{{asset('storage/categories/'.$category->image)}}" loading="lazy" alt="{{ App::getLocale() === 'ar' ? $category->name_ar : (App::getLocale() === 'fr' ? $category->name_fr : $category->name_en) }}">
                                 </div>
                                 <h3 class="box-title">
                                     <a href="{{ url('category/'.$category->slug) }}">{{ App::getLocale() === 'ar' ? $category->name_ar : (App::getLocale() === 'fr' ? $category->name_fr : $category->name_en) }}</a>
@@ -62,7 +62,7 @@
         </div>
     </div>
 
-    <div class="cantact-area6 position-relative overflow-hidden" data-bg-src="{{ asset('about-img.webp') }}">
+    <div class="cantact-area6 position-relative overflow-hidden lazyload-bg" data-bg-src="{{ asset('about-img.webp') }}">
         <div class="container">
             <div class="row gy-4 justify-content-between align-items-center">
                 <div class="col-lg-6">
@@ -87,5 +87,34 @@
             </div>
         </div>
     </div>
+    
+    <script>
+            document.addEventListener("DOMContentLoaded", function () {
+            const lazyBgElements = document.querySelectorAll(".lazyload-bg");
+        
+            const lazyLoadBg = (entries, observer) => {
+                entries.forEach((entry) => {
+                    if (entry.isIntersecting) {
+                        const element = entry.target;
+                        const bgSrc = element.getAttribute("data-bg-src");
+                        if (bgSrc) {
+                            element.style.backgroundImage = `url('${bgSrc}')`;
+                            element.classList.add("bg-loaded"); // Optional: For styling purposes
+                        }
+                        observer.unobserve(element);
+                    }
+                });
+            };
+        
+            const observer = new IntersectionObserver(lazyLoadBg, {
+                rootMargin: "100px", // Load image slightly before it appears
+                threshold: 0.1,
+            });
+        
+            lazyBgElements.forEach((element) => {
+                observer.observe(element);
+            });
+        });
+    </script>
 
 @endsection

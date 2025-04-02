@@ -24,7 +24,7 @@
                                     <tbody>
                                         @foreach ($categories as $category)
                                             <tr>
-                                                <td><img width="100px" height="80px" style="object-fit:cover;border-radius:10px;margin-bottom: -20px;" src="{{ asset('categories/'.$category->image)}}"></td> 
+                                                <td><img width="100px" height="80px" style="object-fit:cover;border-radius:10px;margin-bottom: -20px;" src="{{ asset('storage/categories/'.$category->image)}}"></td> 
                                                 <td><b>{{$category->name_fr}}</b></td>
                                                 <td>{{$category->created_at}}</td>
                                                 <td class="text-end">

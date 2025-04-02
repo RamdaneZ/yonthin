@@ -9,20 +9,27 @@
     <meta name="keywords" content="Tourm - Travel & Tour Booking Agency HTML Template ">
     <meta name="robots" content="INDEX,FOLLOW">
     <meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no">
+    <!-- Preconnect for faster font loading -->
     <link rel="preconnect" href="https://fonts.googleapis.com/">
     <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin>
-    <link rel="preconnect" href="https://fonts.googleapis.com/">
-    <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&amp;family=Manrope:wght@200..800&amp;family=Montez&amp;display=swap" rel="stylesheet">
+    
+    <!-- Google Fonts (combined request) -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Manrope:wght@200..800&family=Montez&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+    
+    <!-- Bootstrap (Preloaded for faster rendering) -->
+    <link rel="preload" href="{{ asset('assets/css/bootstrap.min.css') }}" as="style">
     <link rel="stylesheet" href="{{ asset('assets/css/bootstrap.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('assets/css/fontawesome.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('assets/css/magnific-popup.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('assets/css/swiper-bundle.min.css') }}">
-    @if(App::getLocale() == "ar")
-        <link rel="stylesheet" href="{{ asset('assets/css/style rtl.css') }}">    
-    @else
-        <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}">    
-    @endif
+    
+    <!-- FontAwesome (Deferred to prevent render-blocking) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" media="print" onload="this.media='all'">
+    
+    <!-- Other Stylesheets -->
+    <link rel="stylesheet" href="{{ asset('assets/css/magnific-popup.min.css') }}" media="print" onload="this.media='all'">
+    <link rel="stylesheet" href="{{ asset('assets/css/swiper-bundle.min.css') }}" media="print" onload="this.media='all'">
+    
+    <!-- Language-based Stylesheet -->
+    <link rel="stylesheet" href="{{ asset(App::getLocale() == 'ar' ? 'assets/css/style rtl.css' : 'assets/css/style.css') }}">
+
 </head>
 
 <body>

@@ -85,7 +85,7 @@
                                         <label class="form-label image-content">Image</label>
                                         <div class="input-upload image-content">
                                             @if($slider->image != null)
-                                                <img src="{{ asset('sliders/'.$slider->image) }}" style="display:block;width:350px;object-fit:contain;max-width:unset;border-radius:10px" alt="Image">
+                                                <img src="{{ asset('storage/sliders/'.$slider->image) }}" style="display:block;width:350px;object-fit:contain;max-width:unset;border-radius:10px" alt="Image">
                                             @else
                                                 <img src="{{ asset('app/imgs/theme/upload.svg') }}" alt="Image">
                                             @endif

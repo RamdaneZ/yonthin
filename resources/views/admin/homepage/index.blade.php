@@ -113,7 +113,7 @@
                                     <tbody>
                                         @foreach ($sliders as $slider)
                                             <tr>
-                                                <td><img width="100px" height="50px" style="object-fit:cover;border-radius:10px;margin-bottom: -20px;" src="{{ asset('sliders/'.$slider->image) }}"></td> 
+                                                <td><img width="100px" height="50px" style="object-fit:cover;border-radius:10px;margin-bottom: -20px;" src="{{ asset('storage/sliders/'.$slider->image) }}"></td> 
                                                 <td><b>{{$slider->title_fr}}</b></td>
                                                 <td><b>{{$slider->subtitle_fr}}</b></td>
                                                 <td>{{$slider->created_at}}</td>
@@ -158,21 +158,21 @@
         let bar = $(".bar");
         let percent  = $(".percent");
 
-        // $('form').ajaxForm({
-        //     beforeSend:function(){
-        //         let percentVal = '0%';
-        //         bar.width(percentVal);
-        //         percent.html(percentVal);
-        //     },
-        //     uploadProgress:function(event, position, total, percentComplete){
-        //         var percentVal = percentComplete+'%';
-        //         bar.width(percentVal);
-        //         percent.html(percentVal);
-        //     },
-        //     complete:function(){
-        //         window.location.replace("/admin/homepage");
-        //     }
-        // });
+        $('form').ajaxForm({
+            beforeSend:function(){
+                let percentVal = '0%';
+                bar.width(percentVal);
+                percent.html(percentVal);
+            },
+            uploadProgress:function(event, position, total, percentComplete){
+                var percentVal = percentComplete+'%';
+                bar.width(percentVal);
+                percent.html(percentVal);
+            },
+            complete:function(){
+                window.location.replace("/admin/homepage");
+            }
+        });
 
     });
 </script>

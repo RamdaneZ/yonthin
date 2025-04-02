@@ -33,7 +33,7 @@
                                         <div class="col-lg-6 mb-3">
                                             <label class="form-label">Image</label>
                                             <div class="input-upload">
-                                                <img src="{{ asset('categories/' . $id->image) }}" alt="Image 1" class="img-thumbnail" style="max-width: 250px;">
+                                                <img src="{{ asset('storage/categories/' . $id->image) }}" alt="Image 1" class="img-thumbnail" style="max-width: 250px;">
                                                 <input name="image" class="form-control" type="file" accept="image/*">
                                             </div>
                                         </div>

@@ -62,21 +62,21 @@
         let bar = $(".bar");
         let percent  = $(".percent");
 
-        // $('form').ajaxForm({
-        //     beforeSend:function(){
-        //         let percentVal = '0%';
-        //         bar.width(percentVal);
-        //         percent.html(percentVal);
-        //     },
-        //     uploadProgress:function(event, position, total, percentComplete){
-        //         var percentVal = percentComplete+'%';
-        //         bar.width(percentVal);
-        //         percent.html(percentVal);
-        //     },
-        //     complete:function(){
-        //         window.location.replace("/admin/services");
-        //     }
-        // });
+        $('form').ajaxForm({
+            beforeSend:function(){
+                let percentVal = '0%';
+                bar.width(percentVal);
+                percent.html(percentVal);
+            },
+            uploadProgress:function(event, position, total, percentComplete){
+                var percentVal = percentComplete+'%';
+                bar.width(percentVal);
+                percent.html(percentVal);
+            },
+            complete:function(){
+                window.location.replace("/admin/categories");
+            }
+        });
     });
 </script>
 @endsection

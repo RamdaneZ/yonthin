@@ -7935,12 +7935,6 @@ ol.wp-block-rss {
     padding: 15px 35px
 }
 
-@media (max-width: 1299px) {
-    .header-button .th-btn {
-        display: none
-    }
-}
-
 .header-button .icon-btn .badge {
     font-size: 12px;
     top: 0;
