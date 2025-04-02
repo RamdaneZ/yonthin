@@ -33,7 +33,7 @@ class AdminController extends Controller
 
         if ($admin && $request->password === $admin->password) {
             session(['is_admin' => $admin->id]);
-            return redirect('admin.dashboard');
+            return redirect('admin/dashboard');
         }
 
         return back()->withErrors(['error' => "Les informations d'admin sont incorrectes"]); // Return with error
