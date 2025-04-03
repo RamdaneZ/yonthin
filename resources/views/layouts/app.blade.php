@@ -153,8 +153,8 @@
                         <div class="col-auto @if(App::getlocale() == "ar") ms-xl-auto @else me-xl-auto @endif">
                             <nav class="main-menu d-none d-xl-inline-block">
                                 <ul>
-                                    <li><a href="about.html">{{ __('custom.home')}}</a></li>
-                                    <li><a href="about.html">{{ __('custom.about')}}</a></li>
+                                    <li><a href="{{ url('/') }}">{{ __('custom.home')}}</a></li>
+                                    <li><a href="{{ url('/about') }}">{{ __('custom.about')}}</a></li>
                                     <li class="menu-item-has-children">
                                         <a href="#">{{ __('custom.categories')}}</a>
                                         <ul class="sub-menu">
@@ -163,7 +163,7 @@
                                             @endforeach
                                         </ul>
                                     </li>
-                                    <li><a href="contact.html">{{ __('custom.contact')}}</a></li>
+                                    <li><a href="{{ url('contact') }}">{{__('custom.contact')}}</a></li>
                                 </ul>
                             </nav>
                             <button type="button" class="th-menu-toggle d-block d-xl-none">

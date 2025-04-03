@@ -16,8 +16,21 @@ class MainController extends Controller
         return view('index')->with(['sliders'=>$sliders,'categories'=>$categories]);
     }
 
-    public function cotation(){
-        return view('cotation');
+    public function about(){
+        return view('about');
+    }
+
+    public function contact(){
+        return view('contact');
+    }
+
+    public function category($slug){
+        $category = Category::where('slug',$slug)->first();
+        if(!$category){
+            return back();
+        }
+        $categories = Category::orderByDesc('id')->get();
+        return view('category')->with(['category'=>$category,'categories'=>$categories]);
     }
 
     public function sendCotation(Request $request){
@@ -72,5 +85,7 @@ class MainController extends Controller
             'email' => $request->email,
             'message' => $request->message,
         ]);
+
+        return redirect('contact')->with('success-msg','Success');
     }
 }

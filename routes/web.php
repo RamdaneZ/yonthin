@@ -3,15 +3,16 @@
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\MainController;
+use App\Http\Controllers\ProductController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 Route::middleware(['lang','data'])->group( function(){
     Route::get('/',[MainController::class,'index']);
-    Route::get('/cotation-en-ligne',[MainController::class,'cotation']);
-    Route::post('/send-cotation',[MainController::class,'sendCotation']);
-    Route::get('/service/{slug}',[MainController::class,'service']);
+    Route::get('/contact',[MainController::class,'contact']);
+    Route::get('/about',[MainController::class,'about']);
     Route::post('/sendmessage',[MainController::class,'sendMessage']);
+    Route::get('/category/{slug}',[MainController::class,'category']);
 });
 
     Route::get('/lang/{locale}', function($locale){
@@ -76,6 +77,15 @@ Route::middleware(['lang','data'])->group( function(){
                 Route::get('/delete/{id}',[CategoryController::class,'delete']);
                 Route::post('store',[CategoryController::class,'store']);
                 Route::post('/update/{id}',[CategoryController::class,'update']);
+            });
+
+            Route::prefix('/products')->group(function(){
+                Route::get('/',[ProductController::class,'index']);
+                Route::get('/add',[ProductController::class,'add']);
+                Route::get('/edit/{product}',[ProductController::class,'edit']);
+                Route::get('/delete/{product}',[ProductController::class,'delete']);
+                Route::post('store',[ProductController::class,'store']);
+                Route::post('/update/{product}',[ProductController::class,'update']);
             });
 
             Route::get('settings',[AdminController::class,'settings']);
