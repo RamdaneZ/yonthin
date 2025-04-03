@@ -13,6 +13,7 @@ Route::middleware(['lang','data'])->group( function(){
     Route::get('/about',[MainController::class,'about']);
     Route::post('/sendmessage',[MainController::class,'sendMessage']);
     Route::get('/category/{slug}',[MainController::class,'category']);
+    Route::get('/product/{slug}',[MainController::class,'product']);
 });
 
     Route::get('/lang/{locale}', function($locale){

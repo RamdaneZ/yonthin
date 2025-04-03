@@ -20,13 +20,13 @@
               <div class="card card-body mb-4">
                 <article class="icontext">
                   <span class="icon icon-sm rounded-circle bg-success-light">
-                    <svg style="color: #00b517;width: 20px;height: 20px;" xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="bi bi-briefcase-fill" viewBox="0 0 16 16">
-                      <path d="M6.5 1A1.5 1.5 0 0 0 5 2.5V3H1.5A1.5 1.5 0 0 0 0 4.5v1.384l7.614 2.03a1.5 1.5 0 0 0 .772 0L16 5.884V4.5A1.5 1.5 0 0 0 14.5 3H11v-.5A1.5 1.5 0 0 0 9.5 1h-3zm0 1h3a.5.5 0 0 1 .5.5V3H6v-.5a.5.5 0 0 1 .5-.5z"/>
-                      <path d="M0 12.5A1.5 1.5 0 0 0 1.5 14h13a1.5 1.5 0 0 0 1.5-1.5V6.85L8.129 8.947a.5.5 0 0 1-.258 0L0 6.85v5.65z"/>
+                    <svg xmlns="http://www.w3.org/2000/svg" style="color: #00b517;width: 20px;height: 20px;"  fill="currentColor" class="bi bi-cash-stack" viewBox="0 0 16 16">
+                      <path d="M1 3a1 1 0 0 1 1-1h12a1 1 0 0 1 1 1zm7 8a2 2 0 1 0 0-4 2 2 0 0 0 0 4"/>
+                      <path d="M0 5a1 1 0 0 1 1-1h14a1 1 0 0 1 1 1v8a1 1 0 0 1-1 1H1a1 1 0 0 1-1-1zm3 0a2 2 0 0 1-2 2v4a2 2 0 0 1 2 2h10a2 2 0 0 1 2-2V7a2 2 0 0 1-2-2z"/>
                     </svg>
                   </span>
                   <div class="text">
-                    <h6 class="mb-1 card-title">Services</h6><span>0</span>
+                    <h6 class="mb-1 card-title">Devis</h6><span>{{$devis}}</span>
                   </div>
                 </article>
               </div>
@@ -54,7 +54,7 @@
                     </svg>
                   </span>
                   <div class="text">
-                    <h6 class="mb-1 card-title">Utilisateur</h6><span>0</span>
+                    <h6 class="mb-1 card-title">Catégories</h6><span>{{$categories}}</span>
                   </div>
                 </article>
               </div>
@@ -63,13 +63,12 @@
               <div class="card card-body mb-4">
                 <article class="icontext">
                   <span class="icon icon-sm rounded-circle bg-success-light">
-                    <svg xmlns="http://www.w3.org/2000/svg" style="color: #00b517;width: 20px;height: 20px;"  fill="currentColor" class="bi bi-cash-stack" viewBox="0 0 16 16">
-                      <path d="M1 3a1 1 0 0 1 1-1h12a1 1 0 0 1 1 1zm7 8a2 2 0 1 0 0-4 2 2 0 0 0 0 4"/>
-                      <path d="M0 5a1 1 0 0 1 1-1h14a1 1 0 0 1 1 1v8a1 1 0 0 1-1 1H1a1 1 0 0 1-1-1zm3 0a2 2 0 0 1-2 2v4a2 2 0 0 1 2 2h10a2 2 0 0 1 2-2V7a2 2 0 0 1-2-2z"/>
+                    <svg xmlns="http://www.w3.org/2000/svg" style="color: #00b517;width: 20px;height: 20px;" fill="currentColor" class="bi bi-box-seam-fill" viewBox="0 0 16 16">
+                      <path fill-rule="evenodd" d="M15.528 2.973a.75.75 0 0 1 .472.696v8.662a.75.75 0 0 1-.472.696l-7.25 2.9a.75.75 0 0 1-.557 0l-7.25-2.9A.75.75 0 0 1 0 12.331V3.669a.75.75 0 0 1 .471-.696L7.443.184l.01-.003.268-.108a.75.75 0 0 1 .558 0l.269.108.01.003zM10.404 2 4.25 4.461 1.846 3.5 1 3.839v.4l6.5 2.6v7.922l.5.2.5-.2V6.84l6.5-2.6v-.4l-.846-.339L8 5.961 5.596 5l6.154-2.461z"/>
                     </svg>
                   </span>
                   <div class="text">
-                    <h6 class="mb-1 card-title">Cotation en ligne</h6><span>0</span>
+                    <h6 class="mb-1 card-title">Produits</h6><span>{{$products}}</span>
                   </div>
                 </article>
               </div>
@@ -88,7 +87,7 @@
                   <table class="table align-middle table-nowrap mb-0">
                     <thead class="table-light">
                       <tr>
-                        <th>N°</th>
+                        <th>N</th>
                         <th>Nom</th>
                         <th>Email</th>
                         <th>Date</th>

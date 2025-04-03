@@ -28,7 +28,6 @@ class ProductController extends Controller
     }
 
     public function store(Request $request){
-        // Validate the request
         $request->validate([
             'name_ar' => ['required', 'string', 'max:255'],
             'name_fr' => ['required', 'string', 'max:255'],

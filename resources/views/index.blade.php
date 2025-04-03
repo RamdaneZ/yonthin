@@ -38,7 +38,7 @@
     <div class="destination-area13 position-relative overflow-hidden space-top">
         <div class="container">
             <div class="title-area text-center">
-                <h2 class="sec-title">What we offer</h2>
+                <h2 class="sec-title">{{__('custom.whatWeOffer') }}</h2>
             </div>
             <div class="swiper th-slider has-shadow categorySlider" id="categorySlider1"
                 data-slider-options='{"spaceBetween": "50","breakpoints":{"0":{"slidesPerView":1},"576":{"slidesPerView":"1"},"768":{"slidesPerView":"2"},"992":{"slidesPerView":"3"},"1200":{"slidesPerView":"3"},"1400":{"slidesPerView":"3.2"}}}'>
@@ -68,7 +68,7 @@
                 <div class="col-lg-6">
                     <div class="text-center text-lg-start">
                         <div class="title-area pe-xl-5">
-                            <h2 class="sec-title text-white">About us</h2>
+                            <h2 class="sec-title text-white">{{__('custom.about us') }}</h2>
                             <p class="contact-text2 text-white">Yonthin is a leading manufacturer of computerized embroidery machines circular knitting machines, and whole garment flat knitting machines.
 
                                 We are dedicated to developing, manufacturing, and supplying innovative solutions tailored to your needs.

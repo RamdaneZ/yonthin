@@ -2184,7 +2184,7 @@ input[type=time]::-webkit-calendar-picker-indicator {
     padding-top: 40px;
     display: block;
     text-align: center;
-    background-color: #733e1d
+    background-color: #ffefe6;
 }
 
 .th-menu-wrapper .mobile-logo svg {
@@ -14172,7 +14172,7 @@ ul.comment-list:has(>.th-comment-item ~ .th-comment-item):first-child>.th-post-c
 
 @media (max-width: 767px) {
     .hero-style12 {
-        padding: 100px 0 70px 0
+        padding: 150px 0 70px 0
     }
 }
 

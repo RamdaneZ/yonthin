@@ -30,7 +30,7 @@
                                     <div class="col-lg-12 mb-3">
                                         <label class="form-label">Catégorie</label>
                                         <select name="category_id" class="form-control" required>
-                                            <option value="" disabled>Veuillez choisir une catégorie</option>
+                                            <option value="" disabled selected>Veuillez choisir une catégorie</option>
                                             @foreach($categories as $category)
                                                 <option value="{{$category->id}}">{{$category->name_fr}}</option>
                                             @endforeach

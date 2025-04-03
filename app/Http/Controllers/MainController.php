@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Category;
 use App\Models\Message;
+use App\Models\Product;
 use App\Models\Slider;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\App;
@@ -30,7 +31,12 @@ class MainController extends Controller
             return back();
         }
         $categories = Category::orderByDesc('id')->get();
-        return view('category')->with(['category'=>$category,'categories'=>$categories]);
+        $products = Product::where('category_id',$category->id)->paginate(10);
+        return view('category')->with(['category'=>$category,'categories'=>$categories,'products'=>$products]);
+    }
+    
+    public function product($slug){
+        return view('product');
     }
 
     public function sendCotation(Request $request){

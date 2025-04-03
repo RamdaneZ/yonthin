@@ -3,13 +3,13 @@
 namespace App\Http\Controllers;
 
 use App\Models\Admin;
-use App\Models\Cotation;
-use App\Models\Info;
+use App\Models\Category;
+use App\Models\Devis;
 use App\Models\Message;
-use App\Models\Service;
 use App\Models\Setting;
 use App\Models\Slider;
 use App\Models\User;
+use App\Models\Product;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Http\Request;
 use Intervention\Image\ImageManager;
@@ -50,7 +50,10 @@ class AdminController extends Controller
     public function dashboard(){
         $admins = Admin::count();
         $messages = Message::orderByDesc('id')->get();
-        return view('admin.dashboard')->with(['admins' =>$admins,'messages'=>$messages]);
+        $products = Product::count();
+        $categories = Category::count();
+        $devis = Devis::count();
+        return view('admin.dashboard')->with(['admins' =>$admins,'messages'=>$messages,'products'=>$products,'categories'=>$categories,'devis'=>$devis]);
     }
 
     public function profile(){

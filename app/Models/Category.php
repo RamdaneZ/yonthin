@@ -14,4 +14,8 @@ class Category extends Model
         'slug',
         'actif',
     ];
+    
+    public function products_count(){
+        return $this->hasMany(Product::class,'category_id','id')->count();
+    }
 }
