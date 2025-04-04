@@ -166,11 +166,11 @@
                                                     @foreach($navCategories as $navCategory)
                                                         <div class="col-lg-4">
                                                             <div class="mega-menu-box">
-                                                                <div class="mega-menu-img">
-                                                                    <a href="{{ url('category/'.$navCategory->slug) }}">
-                                                                        <img src="{{ asset('storage/categories/'.$navCategory->image) }}" alt="{{$navCategory->name}}">
-                                                                    </a>
-                                                                </div>
+                                                                <a href="{{ url('category/'.$navCategory->slug) }}">
+                                                                    <div class="mega-menu-img">
+                                                                            <img src="{{ asset('storage/categories/'.$navCategory->image) }}" alt="{{$navCategory->name}}">
+                                                                    </div>
+                                                                </a>
                                                                 <h3 class="mega-menu-title">
                                                                     <a href="{{ url('category/'.$navCategory->slug) }}">{{ App::getLocale() === 'ar' ? $navCategory->name_ar : (App::getLocale() === 'fr' ? $navCategory->name_fr : $navCategory->name_en) }}</a>
                                                                 </h3>
