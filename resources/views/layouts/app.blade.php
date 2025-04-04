@@ -158,15 +158,7 @@
                                     <li><a href="{{ url('/') }}">{{ __('custom.home')}}</a></li>
                                     <li><a href="{{ url('/about') }}">{{ __('custom.about')}}</a></li>
                                     <li class="menu-item-has-children">
-                                        <a href="#">{{ __('custom.categories')}}</a>
-                                        <ul class="sub-menu">
-                                            @foreach($navCategories as $navCategory)
-                                                <li><a href="{{ url('category/'.$navCategory->slug) }}">{{ App::getLocale() === 'ar' ? $navCategory->name_ar : (App::getLocale() === 'fr' ? $navCategory->name_fr : $navCategory->name_en) }}</a></li>
-                                            @endforeach
-                                        </ul>
-                                    </li>
-                                    <li class="menu-item-has-children"><a class="active"
-                                        href="home-travel.html">Home</a>
+                                    <a href="#">{{ __('custom.categories')}}</a>
                                     <ul class="mega-menu mega-menu-content">
                                         <li>
                                             <div class="container">
@@ -174,9 +166,8 @@
                                                     @foreach($navCategories as $navCategory)
                                                         <div class="col-lg-4">
                                                             <div class="mega-menu-box">
-                                                                <div class="mega-menu-img"><img
-                                                                        src="{{ asset('storage/categories/'.$navCategory->image) }}"
-                                                                        alt="Home One">
+                                                                <div class="mega-menu-img">
+                                                                    <img src="{{ asset('storage/categories/'.$navCategory->image) }}" alt="{{$navCategory->name}}">
                                                                 </div>
                                                                 <h3 class="mega-menu-title">
                                                                     <a href="{{ url('category/'.$navCategory->slug) }}">{{ App::getLocale() === 'ar' ? $navCategory->name_ar : (App::getLocale() === 'fr' ? $navCategory->name_fr : $navCategory->name_en) }}</a>
