@@ -167,7 +167,9 @@
                                                         <div class="col-lg-4">
                                                             <div class="mega-menu-box">
                                                                 <div class="mega-menu-img">
-                                                                    <img src="{{ asset('storage/categories/'.$navCategory->image) }}" alt="{{$navCategory->name}}">
+                                                                    <a href="{{ url('category/'.$navCategory->slug) }}">
+                                                                        <img src="{{ asset('storage/categories/'.$navCategory->image) }}" alt="{{$navCategory->name}}">
+                                                                    </a>
                                                                 </div>
                                                                 <h3 class="mega-menu-title">
                                                                     <a href="{{ url('category/'.$navCategory->slug) }}">{{ App::getLocale() === 'ar' ? $navCategory->name_ar : (App::getLocale() === 'fr' ? $navCategory->name_fr : $navCategory->name_en) }}</a>
