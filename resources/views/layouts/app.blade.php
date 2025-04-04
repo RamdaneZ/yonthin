@@ -165,6 +165,30 @@
                                             @endforeach
                                         </ul>
                                     </li>
+                                    <li class="menu-item-has-children"><a class="active"
+                                        href="home-travel.html">Home</a>
+                                    <ul class="mega-menu mega-menu-content">
+                                        <li>
+                                            <div class="container">
+                                                <div class="row gy-4">
+                                                    @foreach($navCategories as $navCategory)
+                                                        <div class="col-lg-4">
+                                                            <div class="mega-menu-box">
+                                                                <div class="mega-menu-img"><img
+                                                                        src="{{ asset('storage/categories/'.$navCategory->image) }}"
+                                                                        alt="Home One">
+                                                                </div>
+                                                                <h3 class="mega-menu-title">
+                                                                    <a href="{{ url('category/'.$navCategory->slug) }}">{{ App::getLocale() === 'ar' ? $navCategory->name_ar : (App::getLocale() === 'fr' ? $navCategory->name_fr : $navCategory->name_en) }}</a>
+                                                                </h3>
+                                                            </div>
+                                                        </div>
+                                                    @endforeach
+                                                </div>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </li>
                                     <li><a href="{{ url('contact') }}">{{__('custom.contact')}}</a></li>
                                 </ul>
                             </nav>
