@@ -29492,7 +29492,9 @@ span.select2-selection.select2-selection--single:focus {
 }
 
 .tour-slider1 .tour-slider-img img {
-    border-radius: 8px
+    border-radius: 8px;
+    width:100%;
+    object-fit: cover;
 }
 
 .tour-slider1 .slider-arrow {
