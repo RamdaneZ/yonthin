@@ -24020,11 +24020,6 @@ span.select2-selection.select2-selection--single:focus {
     color: var(--white-color)
 }
 
-.price-card:hover .checklist li:before,
-.price-card.active .checklist li:before {
-    content: url("data:image/svg+xml,%3Csvg width='20' height='20' viewBox='0 0 20 20' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cg clip-path='url(%23clip0_214_43761)'%3E%3Cpath d='M14.166 2.78184C12.9403 2.0728 11.5172 1.66699 9.99935 1.66699C5.39697 1.66699 1.66602 5.39795 1.66602 10.0003C1.66602 14.6027 5.39697 18.3337 9.99935 18.3337C14.6017 18.3337 18.3327 14.6027 18.3327 10.0003C18.3327 9.42958 18.2753 8.87216 18.166 8.33366' stroke='%23E9F6F9' stroke-width='1.5' stroke-linecap='round'/%3E%3Cpath d='M6.66602 10.417C6.66602 10.417 7.91602 10.417 9.58268 13.3337C9.58268 13.3337 14.215 5.69477 18.3327 4.16699' stroke='%23E9F6F9' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/g%3E%3Cdefs%3E%3CclipPath id='clip0_214_43761'%3E%3Crect width='20' height='20' fill='white'/%3E%3C/clipPath%3E%3C/defs%3E%3C/svg%3E%0A")
-}
-
 .price-card:hover .th-btn,
 .price-card.active .th-btn {
     background-color: transparent;
@@ -25784,19 +25779,6 @@ span.select2-selection.select2-selection--single:focus {
     font-size: 18px;
     font-weight: 400;
     line-height: 28px;
-    padding-left: 40px
-}
-
-.checklist li:before {
-    content: url("data:image/svg+xml,%3Csvg width='24' height='24' viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M17 3.33782C15.5291 2.48697 13.8214 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22C17.5228 22 22 17.5228 22 12C22 11.3151 21.9311 10.6462 21.8 10' stroke='%231CA8CB' stroke-width='1.5' stroke-linecap='round'/%3E%3Cpath d='M8 12.5C8 12.5 9.5 12.5 11.5 16C11.5 16 17.0588 6.83333 22 5' stroke='%231CA8CB' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E%0A");
-    font-family: var(--icon-font);
-    position: absolute;
-    left: 0;
-    top: 0px;
-    font-size: 32px;
-    font-weight: 600;
-    color: var(--theme-color);
-    margin-right: 10px
 }
 
 .checklist li:not(:last-child) {

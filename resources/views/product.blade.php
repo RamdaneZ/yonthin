@@ -3,66 +3,112 @@
 <section class="space mt-4">
     <div class="container">
         <div class="row mb-4">
-            <div class="col-xxl-6 col-lg-6">
+            <div class="col-xxl-5 col-lg-5">
                 <div class="tour-page-single">
                     <div class="slider-area tour-slider1">
                         <div class="swiper th-slider mb-4" id="tourSlider4"
                             data-slider-options='{"effect":"fade","loop":true,"thumbs":{"swiper":".tour-thumb-slider"},"autoplayDisableOnInteraction":"true"}'>
                             <div class="swiper-wrapper">
-                                <div class="swiper-slide">
-                                    <div class="tour-slider-img"><img src="{{ asset('product3.png') }}"
-                                            alt="img"></div>
-                                </div>
-                                <div class="swiper-slide">
-                                    <div class="tour-slider-img"><img src="{{ asset('product2.jpg') }}"
-                                            alt="img"></div>
-                                </div>
-                                <div class="swiper-slide">
-                                    <div class="tour-slider-img"><img src="{{ asset('product.jpg') }}"
-                                            alt="img"></div>
-                                </div>
-                                <div class="swiper-slide">
-                                    <div class="tour-slider-img"><img src="{{ asset('product2.jpg') }}"
-                                            alt="img"></div>
-                                </div>
-                                <div class="swiper-slide">
-                                    <div class="tour-slider-img"><img src="{{ asset('product.jpg') }}"
-                                            alt="img"></div>
-                                </div>
-                                <div class="swiper-slide">
-                                    <div class="tour-slider-img"><img src="{{ asset('product2.jpg') }}"
-                                            alt="img"></div>
-                                </div>
-                            </div>
+                                @if($product->image)
+                                    <div class="swiper-slide">
+                                        <div class="tour-slider-img">
+                                            <img src="{{ asset('storage/products/' . $product->image) }}" alt="img">
+                                        </div>
+                                    </div>
+                                @endif
+                            
+                                @if($product->image2)
+                                    <div class="swiper-slide">
+                                        <div class="tour-slider-img">
+                                            <img src="{{ asset('storage/products/' . $product->image2) }}" alt="img">
+                                        </div>
+                                    </div>
+                                @endif
+                            
+                                @if($product->image3)
+                                    <div class="swiper-slide">
+                                        <div class="tour-slider-img">
+                                            <img src="{{ asset('storage/products/' . $product->image3) }}" alt="img">
+                                        </div>
+                                    </div>
+                                @endif
+                            
+                                @if($product->image4)
+                                    <div class="swiper-slide">
+                                        <div class="tour-slider-img">
+                                            <img src="{{ asset('storage/products/' . $product->image4) }}" alt="img">
+                                        </div>
+                                    </div>
+                                @endif
+                            
+                                @if($product->image5)
+                                    <div class="swiper-slide">
+                                        <div class="tour-slider-img">
+                                            <img src="{{ asset('storage/products/' . $product->image5) }}" alt="img">
+                                        </div>
+                                    </div>
+                                @endif
+                            
+                                @if($product->image6)
+                                    <div class="swiper-slide">
+                                        <div class="tour-slider-img">
+                                            <img src="{{ asset('storage/products/' . $product->image6) }}" alt="img">
+                                        </div>
+                                    </div>
+                                @endif
+                            </div>                            
                         </div>
                         <div class="swiper th-slider tour-thumb-slider"
                             data-slider-options='{"effect":"slide","loop":true,"breakpoints":{"0":{"slidesPerView":3},"576":{"slidesPerView":"4"},"768":{"slidesPerView":"4"},"992":{"slidesPerView":"5"},"1200":{"slidesPerView":"5"}},"autoplayDisableOnInteraction":"true"}'>
                             <div class="swiper-wrapper">
-                                <div class="swiper-slide">
-                                    <div class="tour-slider-img"><img src="{{ asset('product3.png') }}"
-                                            alt="Image"></div>
-                                </div>
-                                <div class="swiper-slide">
-                                    <div class="tour-slider-img"><img src="{{ asset('product2.jpg') }}"
-                                            alt="Image"></div>
-                                </div>
-                                <div class="swiper-slide">
-                                    <div class="tour-slider-img"><img src="{{ asset('product.jpg') }}"
-                                            alt="Image"></div>
-                                </div>
-                                <div class="swiper-slide">
-                                    <div class="tour-slider-img"><img src="{{ asset('product2.jpg') }}"
-                                            alt="Image"></div>
-                                </div>
-                                <div class="swiper-slide">
-                                    <div class="tour-slider-img"><img src="{{ asset('product.jpg') }}"
-                                            alt="Image"></div>
-                                </div>
-                                <div class="swiper-slide">
-                                    <div class="tour-slider-img"><img src="{{ asset('product2.jpg') }}"
-                                            alt="Image"></div>
-                                </div>
-                            </div>
+                                @if($product->image)
+                                    <div class="swiper-slide">
+                                        <div class="tour-slider-img">
+                                            <img src="{{ asset('storage/products/' . $product->image) }}" alt="img">
+                                        </div>
+                                    </div>
+                                @endif
+                            
+                                @if($product->image2)
+                                    <div class="swiper-slide">
+                                        <div class="tour-slider-img">
+                                            <img src="{{ asset('storage/products/' . $product->image2) }}" alt="img">
+                                        </div>
+                                    </div>
+                                @endif
+                            
+                                @if($product->image3)
+                                    <div class="swiper-slide">
+                                        <div class="tour-slider-img">
+                                            <img src="{{ asset('storage/products/' . $product->image3) }}" alt="img">
+                                        </div>
+                                    </div>
+                                @endif
+                            
+                                @if($product->image4)
+                                    <div class="swiper-slide">
+                                        <div class="tour-slider-img">
+                                            <img src="{{ asset('storage/products/' . $product->image4) }}" alt="img">
+                                        </div>
+                                    </div>
+                                @endif
+                            
+                                @if($product->image5)
+                                    <div class="swiper-slide">
+                                        <div class="tour-slider-img">
+                                            <img src="{{ asset('storage/products/' . $product->image5) }}" alt="img">
+                                        </div>
+                                    </div>
+                                @endif
+                            
+                                @if($product->image6)
+                                    <div class="swiper-slide">
+                                        <div class="tour-slider-img">
+                                            <img src="{{ asset('storage/products/' . $product->image6) }}" alt="img">
+                                        </div>
+                                    </div>
+                                @endif
+                            </div>  
                         </div><button data-slider-prev="#tourSlider4" class="slider-arrow style3 slider-prev"><img
                                 src="assets/img/icon/hero-arrow-left.svg" alt=""></button> <button
                             data-slider-next="#tourSlider4" class="slider-arrow style3 slider-next"><img
@@ -70,42 +116,44 @@
                     </div>
                 </div>
             </div>
-            <div class="col-xxl-6 col-lg-6 mt-4">
-                <h3 class="tour-price">YX-G High Speed Flat Embroidery Machine</h3>
-                <p class="box-text mb-30">voluptatem accusantium doloremque laudantium, totam rem aperiam,
-                    eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt
-                    explicabo. Dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non
-                    numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat
-                    voluptatem. Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam
-                    nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla
-                    pariatur</p>
+            <div class="col-xxl-7 col-lg-7 mt-4">
+                <h3 class="tour-price">{{ App::getLocale() === 'ar' ? $product->name_ar : (App::getLocale() === 'fr' ? $product->name_fr : $product->name_en) }}</h3>
+                <hr>
+                <p class="box-text mb-30">{{ App::getLocale() === 'ar' ? $product->description_ar : (App::getLocale() === 'fr' ? $product->description_fr : $product->description_en) }}</p>
                 <div class="checklist mb-50">
                     <ul>
-                        <li>Visit most popular location of Maldives</li>
-                        <li>Buffet Breakfast for all traveler with good quality.</li>
-                        <li>Expert guide always guide you and give informations.</li>
-                        <li>Best Hotel for all also great food.</li>
-                        <li>Helping all traveler for Money Exchange.</li>
-                        <li>Buffet Breakfast for all traveler with good quality..</li>
-                        <li>Buffet Breakfast for all traveler with good quality.</li>
+                        @foreach($advantages as $advantage)
+                            <li>
+                                <svg xmlns="http://www.w3.org/2000/svg" style="color:#f06011" width="32" height="32" fill="currentColor" class="bi bi-check2-circle" viewBox="0 0 16 16">
+                                    <path d="M2.5 8a5.5 5.5 0 0 1 8.25-4.764.5.5 0 0 0 .5-.866A6.5 6.5 0 1 0 14.5 8a.5.5 0 0 0-1 0 5.5 5.5 0 1 1-11 0"/>
+                                    <path d="M15.354 3.354a.5.5 0 0 0-.708-.708L8 9.293 5.354 6.646a.5.5 0 1 0-.708.708l3 3a.5.5 0 0 0 .708 0z"/>
+                                </svg>
+                                {{$advantage}}
+                            </li>
+                        @endforeach
                     </ul>
                 </div>
             </div>
         </div>
-        <div class="bg-top-center position-relative overflow-hidden mt-4">
-            <div class="container">
-                <div class="row justify-content-between">
-                    <div class="col-lg-4" style="background: #ececec;">
-                        <img src="{{ asset('logo-dark.png')}}" style="height:100%;object-fit:contain">
-                    </div>
-                    <div class="col-lg-8 ps-0">
-                        <img src="{{ asset('product3.png')}}" style="width:100%;object-fit:cover;max-height:500px">
-                        <div class="video-box3"><a href="https://www.youtube.com/watch?v=cQfIUPw72Dk"
-                                class="play-btn popup-video" style="right:30%;top:50%"><i class="fa-sharp fa-solid fa-play"></i></a></div>
+        @if($product->video)
+            <div class="bg-top-center position-relative overflow-hidden mt-4">
+                <div class="container">
+                    <div class="row justify-content-between">
+                        <div class="col-lg-4" style="background: #ececec;">
+                            <img src="{{ asset('logo-dark.png')}}" style="height:100%;object-fit:contain">
+                        </div>
+                        <div class="col-lg-8 ps-0" style="min-height: 400px">
+                            <img src="{{ asset('storage/products/'.$product->image)}}" style="width:100%;object-fit:cover;max-height:500px;position: absolute;height:100%">
+                            <div class="video-box3">
+                                <a href="{{ asset('storage/products/videos/'.$product->video) }}"
+                                    class="play-btn popup-video" style="right:30%;top:50%"><i class="fa-sharp fa-solid fa-play"></i>
+                                </a>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
+        @endif
         <section class="position-relative overflow-hidden space" id="service-sec">
             <div class="container">
                 <div class="row">

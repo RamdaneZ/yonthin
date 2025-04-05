@@ -20,6 +20,9 @@ return new class extends Migration
             $table->longText('description_en')->nullable();
             $table->longText('description_fr')->nullable();
             $table->longText('description_ar')->nullable();
+            $table->json('adv_en')->nullable();
+            $table->json('adv_fr')->nullable();
+            $table->json('adv_ar')->nullable();
             $table->string('image');
             $table->string('image2')->nullable();
             $table->string('image3')->nullable();

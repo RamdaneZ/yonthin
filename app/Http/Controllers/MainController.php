@@ -60,8 +60,22 @@ class MainController extends Controller
     }
     
     public function product($slug){
-        return view('product');
+        $product = Product::where('slug', $slug)->first();
+        if (!$product) {
+            return redirect('/');
+        }
+    
+        $locale = app()->getLocale(); // 'ar', 'fr', 'en'
+        $advField = 'adv_' . $locale;
+    
+        $advantages = json_decode($product->$advField, true); // decode to array
+    
+        return view('product')->with([
+            'product' => $product,
+            'advantages' => $advantages
+        ]);
     }
+    
 
     public function service(string $slug){
         $service = Service::where('slug',$slug)->first();

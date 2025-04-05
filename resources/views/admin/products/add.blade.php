@@ -15,6 +15,15 @@
                             <div class="row">
                               <div class="col-lg-12">
                                 <div class="row gx-3">
+                                    <div class="col-lg-12 mb-3">
+                                        <label class="form-label">Catégorie</label>
+                                        <select name="category_id" class="form-control" required>
+                                            <option value="" disabled selected>Veuillez choisir une catégorie</option>
+                                            @foreach($categories as $category)
+                                                <option value="{{$category->id}}">{{$category->name_fr}}</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
                                     <div class="col-lg-4 mb-3">
                                         <label class="form-label">Nom du produit (عربية)</label>
                                         <input name="name_ar" class="form-control" type="text" placeholder="Entrer nom ici" required>
@@ -27,15 +36,32 @@
                                         <label class="form-label">Nom du produit (EN)</label>
                                         <input name="name_en" class="form-control" type="text" placeholder="Entrer nom ici" required>
                                     </div>
-                                    <div class="col-lg-12 mb-3">
-                                        <label class="form-label">Catégorie</label>
-                                        <select name="category_id" class="form-control" required>
-                                            <option value="" disabled selected>Veuillez choisir une catégorie</option>
-                                            @foreach($categories as $category)
-                                                <option value="{{$category->id}}">{{$category->name_fr}}</option>
-                                            @endforeach
-                                        </select>
+                                <hr>
+                                    <div class="col-lg-4 mb-3">
+                                        <label class="form-label">Description du produit (عربية)</label>
+                                        <textarea name="description_ar" class="form-control" cols="30" rows="10"></textarea>
                                     </div>
+                                    <div class="col-lg-4 mb-3">
+                                        <label class="form-label">Description du produit (FR)</label>
+                                        <textarea name="description_fr" class="form-control" cols="30" rows="10"></textarea>
+                                    </div>
+                                    <div class="col-lg-4 mb-3">
+                                        <label class="form-label">Description du produit (EN)</label>
+                                        <textarea name="description_en" class="form-control" cols="30" rows="10"></textarea>
+                                    </div>
+                                <hr>
+                                <div class="col-lg-4 mb-3">
+                                    <label class="form-label">Liste d'avantages (عربية)</label>
+                                    <input name="adv_ar" class="form-control" type="text" placeholder="Entrer ici">
+                                </div>
+                                <div class="col-lg-4 mb-3">
+                                    <label class="form-label">Liste d'avantages (FR)</label>
+                                    <input name="adv_fr" class="form-control" type="text" placeholder="Entrer ici">
+                                </div>
+                                <div class="col-lg-4 mb-3">
+                                    <label class="form-label">Liste d'avantages (EN)</label>
+                                    <input name="adv_en" class="form-control" type="text" placeholder="Entrer ici">
+                                </div>
                                 <hr>
                                 </div>
                                 <div class="row gx-3">
@@ -72,6 +98,50 @@
                                             </div>
                                         </div>
                                     </div>
+                                    <div class="col-lg-6 mb-3">
+                                        <label class="form-label">Image4</label>
+                                        <div class="input-upload">
+                                            <img src="{{ asset('app/imgs/theme/upload.svg') }}" alt="Image">
+                                            <input name="image4" class="form-control" type="file" accept="image/*" required>
+                                            <div class="progress">
+                                                <div class="bar" style="background:#75a8d6"></div><br>
+                                                <div class="percent" style="position:absolute;left: 50%;color: white;">0%</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6 mb-3">
+                                        <label class="form-label">Image5</label>
+                                        <div class="input-upload">
+                                            <img src="{{ asset('app/imgs/theme/upload.svg') }}" alt="Image">
+                                            <input name="image5" class="form-control" type="file" accept="image/*">
+                                            <div class="progress">
+                                                <div class="bar" style="background:#75a8d6"></div><br>
+                                                <div class="percent" style="position:absolute;left: 50%;color: white;">0%</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6 mb-3">
+                                        <label class="form-label">Image6</label>
+                                        <div class="input-upload">
+                                            <img src="{{ asset('app/imgs/theme/upload.svg') }}" alt="Image">
+                                            <input name="image6" class="form-control" type="file" accept="image/*">
+                                            <div class="progress">
+                                                <div class="bar" style="background:#75a8d6"></div><br>
+                                                <div class="percent" style="position:absolute;left: 50%;color: white;">0%</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <hr>
+                                <div class="col-lg-6 mb-3">
+                                    <label class="form-label">Video</label>
+                                    <div class="input-upload">
+                                        <input name="video" class="form-control" type="file">
+                                        <div class="progress">
+                                            <div class="bar" style="background:#75a8d6"></div><br>
+                                            <div class="percent" style="position:absolute;left: 50%;color: white;">0%</div>
+                                        </div>
+                                    </div>
                                 </div>
                               </div>
                             </div><br>
@@ -93,21 +163,21 @@
         let bar = $(".bar");
         let percent  = $(".percent");
 
-        // $('form').ajaxForm({
-        //     beforeSend:function(){
-        //         let percentVal = '0%';
-        //         bar.width(percentVal);
-        //         percent.html(percentVal);
-        //     },
-        //     uploadProgress:function(event, position, total, percentComplete){
-        //         var percentVal = percentComplete+'%';
-        //         bar.width(percentVal);
-        //         percent.html(percentVal);
-        //     },
-        //     complete:function(){
-        //         window.location.replace("/admin/categories");
-        //     }
-        // });
+        $('form').ajaxForm({
+            beforeSend:function(){
+                let percentVal = '0%';
+                bar.width(percentVal);
+                percent.html(percentVal);
+            },
+            uploadProgress:function(event, position, total, percentComplete){
+                var percentVal = percentComplete+'%';
+                bar.width(percentVal);
+                percent.html(percentVal);
+            },
+            complete:function(){
+                window.location.replace("/admin/products");
+            }
+        });
     });
 </script>
 @endsection
