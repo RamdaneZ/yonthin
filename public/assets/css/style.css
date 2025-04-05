@@ -31212,7 +31212,7 @@ span.select2-selection.select2-selection--single:focus {
 }
 
 .gallery-box.style5 .gallery-img {
-    height: 360px
+    height: 100%;
 }
 
 .gallery-box.style5 .gallery-img img {

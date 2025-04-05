@@ -11,52 +11,83 @@
                             <div class="swiper-wrapper">
                                 @if($product->image)
                                     <div class="swiper-slide">
-                                        <div class="tour-slider-img">
-                                            <img src="{{ asset('storage/products/' . $product->image) }}" alt="img">
+                                        <div class="gallery-box style5">
+                                            <div class="gallery-img global-img">
+                                                <img src="{{ asset('storage/products/' . $product->image) }}" loading="lazy" alt="gallery image">
+                                                <a href="{{ asset('storage/products/' . $product->image) }}" class="icon-btn popup-image">
+                                                    <i class="fal fa-magnifying-glass-plus"></i>
+                                                </a>
+                                            </div>
                                         </div>
                                     </div>
                                 @endif
                             
                                 @if($product->image2)
                                     <div class="swiper-slide">
-                                        <div class="tour-slider-img">
-                                            <img src="{{ asset('storage/products/' . $product->image2) }}" alt="img">
+                                        <div class="gallery-box style5">
+                                            <div class="gallery-img global-img">
+                                                <img src="{{ asset('storage/products/' . $product->image2) }}" loading="lazy" alt="gallery image">
+                                                <a href="{{ asset('storage/products/' . $product->image2) }}" class="icon-btn popup-image">
+                                                    <i class="fal fa-magnifying-glass-plus"></i>
+                                                </a>
+                                            </div>
                                         </div>
                                     </div>
                                 @endif
                             
                                 @if($product->image3)
                                     <div class="swiper-slide">
-                                        <div class="tour-slider-img">
-                                            <img src="{{ asset('storage/products/' . $product->image3) }}" alt="img">
+                                        <div class="gallery-box style5">
+                                            <div class="gallery-img global-img">
+                                                <img src="{{ asset('storage/products/' . $product->image3) }}" loading="lazy" alt="gallery image">
+                                                <a href="{{ asset('storage/products/' . $product->image3) }}" class="icon-btn popup-image">
+                                                    <i class="fal fa-magnifying-glass-plus"></i>
+                                                </a>
+                                            </div>
                                         </div>
                                     </div>
                                 @endif
                             
                                 @if($product->image4)
                                     <div class="swiper-slide">
-                                        <div class="tour-slider-img">
-                                            <img src="{{ asset('storage/products/' . $product->image4) }}" alt="img">
+                                        <div class="gallery-box style5">
+                                            <div class="gallery-img global-img">
+                                                <img src="{{ asset('storage/products/' . $product->image4) }}" loading="lazy" alt="gallery image">
+                                                <a href="{{ asset('storage/products/' . $product->image4) }}" class="icon-btn popup-image">
+                                                    <i class="fal fa-magnifying-glass-plus"></i>
+                                                </a>
+                                            </div>
                                         </div>
                                     </div>
                                 @endif
                             
                                 @if($product->image5)
                                     <div class="swiper-slide">
-                                        <div class="tour-slider-img">
-                                            <img src="{{ asset('storage/products/' . $product->image5) }}" alt="img">
+                                        <div class="gallery-box style5">
+                                            <div class="gallery-img global-img">
+                                                <img src="{{ asset('storage/products/' . $product->image5) }}" loading="lazy" alt="gallery image">
+                                                <a href="{{ asset('storage/products/' . $product->image5) }}" class="icon-btn popup-image">
+                                                    <i class="fal fa-magnifying-glass-plus"></i>
+                                                </a>
+                                            </div>
                                         </div>
                                     </div>
                                 @endif
                             
                                 @if($product->image6)
                                     <div class="swiper-slide">
-                                        <div class="tour-slider-img">
-                                            <img src="{{ asset('storage/products/' . $product->image6) }}" alt="img">
+                                        <div class="gallery-box style5">
+                                            <div class="gallery-img global-img">
+                                                <img src="{{ asset('storage/products/' . $product->image6) }}" loading="lazy" alt="gallery image">
+                                                <a href="{{ asset('storage/products/' . $product->image6) }}" class="icon-btn popup-image">
+                                                    <i class="fal fa-magnifying-glass-plus"></i>
+                                                </a>
+                                            </div>
                                         </div>
                                     </div>
                                 @endif
-                            </div>                            
+                            </div>
+                                                       
                         </div>
                         <div class="swiper th-slider tour-thumb-slider"
                             data-slider-options='{"effect":"slide","loop":true,"breakpoints":{"0":{"slidesPerView":3},"576":{"slidesPerView":"4"},"768":{"slidesPerView":"4"},"992":{"slidesPerView":"5"},"1200":{"slidesPerView":"5"}},"autoplayDisableOnInteraction":"true"}'>

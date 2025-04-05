@@ -64,7 +64,7 @@ class ProductController extends Controller
         }
     
         // Process video
-        $videoPath = null;
+        $videoName = null;
         if ($request->hasFile('video')) {
             $video = $request->file('video');
             $videoName = time() . '.' . $video->getClientOriginalExtension();
@@ -96,7 +96,7 @@ class ProductController extends Controller
             'image4' => $images['image4'] ?? null,
             'image5' => $images['image5'] ?? null,
             'image6' => $images['image6'] ?? null,
-            'video' => $videoPath,
+            'video' => $videoName,
         ]);
     
         return redirect('admin/products')->with('success', 'Produit crée avec succès');
