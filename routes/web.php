@@ -10,6 +10,8 @@ use Illuminate\Support\Facades\Route;
 Route::middleware(['lang','data'])->group( function(){
     Route::get('/',[MainController::class,'index']);
     Route::get('/contact',[MainController::class,'contact']);
+    Route::get('/catalogue',[MainController::class,'catalogue']);
+    Route::post('/catalogue/store',[MainController::class,'catalogue_store']);
     Route::get('/about',[MainController::class,'about']);
     Route::post('/sendmessage',[MainController::class,'sendMessage']);
     Route::get('/category/{slug}',[MainController::class,'category']);
@@ -39,10 +41,10 @@ Route::middleware(['lang','data'])->group( function(){
                 Route::get('/delete/{id}',[AdminController::class,'delete_message']);
             });
 
-            Route::prefix('/cotations')->group(function(){
-                Route::get('/',[AdminController::class,'cotations']);
-                Route::get('/detail/{id}',[AdminController::class,'detail_cotations']);
-                Route::get('/delete/{id}',[AdminController::class,'delete_cotations']);
+            Route::prefix('/catalogueOrders')->group(function(){
+                Route::get('/',[AdminController::class,'catalogueOrders']);
+                Route::get('/detail/{id}',[AdminController::class,'detail_catalogueOrders']);
+                Route::get('/delete/{id}',[AdminController::class,'delete_catalogueOrders']);
             });
 
             Route::prefix('/homepage')->group(function(){

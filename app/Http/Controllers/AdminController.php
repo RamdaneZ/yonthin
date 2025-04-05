@@ -4,11 +4,10 @@ namespace App\Http\Controllers;
 
 use App\Models\Admin;
 use App\Models\Category;
-use App\Models\Devis;
+use App\Models\CatalogueOrder;
 use App\Models\Message;
 use App\Models\Setting;
 use App\Models\Slider;
-use App\Models\User;
 use App\Models\Product;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Http\Request;
@@ -52,7 +51,7 @@ class AdminController extends Controller
         $messages = Message::orderByDesc('id')->get();
         $products = Product::count();
         $categories = Category::count();
-        $devis = Devis::count();
+        $devis = CatalogueOrder::count();
         return view('admin.dashboard')->with(['admins' =>$admins,'messages'=>$messages,'products'=>$products,'categories'=>$categories,'devis'=>$devis]);
     }
 
@@ -250,18 +249,18 @@ class AdminController extends Controller
         return redirect('admin/messages')->with('success','Message supprimé avec succéss');
     }
 
-    public function cotations(){
-        $cotations = Cotation::orderByDesc('id')->get();
-        return view('admin.cotations.index')->with(['cotations'=>$cotations]);
+    public function catalogueOrders(){
+        $orders = CatalogueOrder::orderByDesc('id')->get();
+        return view('admin.catalogueOrders.index')->with(['orders'=>$orders]);
     }
 
-    public function detail_cotations(Cotation $id){
-        return view('admin.cotations.detail')->with(['id'=>$id]);
+    public function detail_catalogueOrders(CatalogueOrder $id){
+        return view('admin.catalogueOrders.detail')->with(['id'=>$id]);
     }
 
-    public function delete_cotations(Cotation $id){
+    public function delete_catalogueOrders(CatalogueOrder $id){
         $id->delete();
-        return redirect('admin/cotations')->with('success','Cotation supprimé avec succéss');
+        return redirect('admin/catalogueOrders')->with('success','Demande de catalogue supprimé avec succéss');
     }
 
     // Admin section //

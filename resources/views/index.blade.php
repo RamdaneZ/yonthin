@@ -35,6 +35,61 @@
             class="slider-arrow slider-next"><img loading="lazy" src="assets/img/icon/left-arrow2.svg" alt=""></button>
     </div>
 
+    <div class="counter-area space">
+        <div class="container">
+            <div class="title-area text-center">
+                <h2 class="sec-title">{{__('custom.welcomeYonthin') }}</h2>
+                <p>{{__('custom.welcomeSubtitle') }}</p>
+            </div>
+            <div class="row">
+                <div class="col-sm-6 col-xl-3 counter-card-wrap">
+                    <div class="counter-card">
+                        <div class="counter-shape"><span></span></div>
+                        <div class="media-body text-center">
+                            <i class="fas fa-calendar-alt fa-2x mb-2 text-primary"></i>
+                            <h3 class="box-number"><span class="counter-number">1989</span></h3>
+                            <h6 class="counter-title">{{ __('custom.founded_in') }}</h6>
+                        </div>
+                    </div>
+                </div>
+            
+                <div class="col-sm-6 col-xl-3 counter-card-wrap">
+                    <div class="counter-card">
+                        <div class="counter-shape"><span></span></div>
+                        <div class="media-body text-center">
+                            <i class="fas fa-users fa-2x mb-2 text-success"></i>
+                            <h3 class="box-number"><span class="counter-number">500</span></h3>
+                            <h6 class="counter-title">{{ __('custom.employees') }}</h6>
+                        </div>
+                    </div>
+                </div>
+            
+                <div class="col-sm-6 col-xl-3 counter-card-wrap">
+                    <div class="counter-card">
+                        <div class="counter-shape"><span></span></div>
+                        <div class="media-body text-center">
+                            <i class="fas fa-lightbulb fa-2x mb-2 text-warning"></i>
+                            <h3 class="box-number">+<span class="counter-number">160</span></h3>
+                            <h6 class="counter-title">{{ __('custom.invention_patents') }}</h6>
+                        </div>
+                    </div>
+                </div>
+            
+                <div class="col-sm-6 col-xl-3 counter-card-wrap">
+                    <div class="counter-card">
+                        <div class="counter-shape"><span></span></div>
+                        <div class="media-body text-center">
+                            <i class="fas fa-industry fa-2x mb-2 text-danger"></i>
+                            <h3 class="box-number">+<span class="counter-number">100</span>k</h3>
+                            <h6 class="counter-title">{{ __('custom.factory_area') }}</h6>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+
     <div class="destination-area13 position-relative overflow-hidden space-top">
         <div class="container">
             <div class="title-area text-center">

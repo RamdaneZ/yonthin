@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\CatalogueOrder;
 use App\Models\Category;
 use App\Models\Message;
 use App\Models\Product;
@@ -25,6 +26,29 @@ class MainController extends Controller
         return view('contact');
     }
 
+    public function catalogue(){
+        return view('catalogue');
+    }
+
+    public function catalogue_store(Request $request){
+        $request->validate([
+            'name' => ['required','string','max:255'],
+            'email' => ['required','email','string','max:255'],
+            'phone' => ['required','string','max:255'],
+            'message' => ['nullable','string'],
+        ]);
+
+        CatalogueOrder::create([
+            'name' => $request->name,
+            'email' => $request->email,
+            'phone' => $request->phone,
+            'message' => $request->message,
+        ]);
+
+        return back()->with('success-msg','Success');
+        
+    }
+
     public function category($slug){
         $category = Category::where('slug',$slug)->first();
         if(!$category){
@@ -37,38 +61,6 @@ class MainController extends Controller
     
     public function product($slug){
         return view('product');
-    }
-
-    public function sendCotation(Request $request){
-        $request->validate([
-            'name' => ['required','string','max:255'],
-            'societe_name' => ['required','string','max:255'],
-            'phone' => ['required','string','min:10'],
-            'email' => ['required','string','email','max:255'],
-            'from' => ['required','string','max:255'],
-            'to' => ['required','string','max:255'],
-            'conditionement' => ['required','string','max:255'],
-            'type' => ['nullable','string','max:255'],
-            'description' => ['nullable','string'],
-            'comment' => ['nullable','string'],
-            'incoterm' => ['nullable','string'],
-        ]);
-
-        Cotation::create([
-            'name' => $request->name,
-            'societe_name' => $request->societe_name,
-            'phone' => $request->phone,
-            'email' => $request->email,
-            'from' => $request->from,
-            'to' => $request->to,
-            'conditionement' => $request->conditionement,
-            'type' => $request->type,
-            'description' => $request->description,
-            'comment' => $request->comment,
-            'incoterm' => $request->incoterm,
-        ]);
-        
-        return redirect('cotation-en-ligne')->with('success',"Success");
     }
 
     public function service(string $slug){

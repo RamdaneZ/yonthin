@@ -18569,7 +18569,7 @@ span.select2-selection.select2-selection--single:focus {
     height: 70px;
     line-height: 68px;
     text-align: center;
-    background: var(--title-color);
+    background: var(--theme-color);
     border-radius: 50%;
     color: var(--white-color);
     -webkit-transition: all 0.4s ease-in-out;
@@ -24388,8 +24388,8 @@ span.select2-selection.select2-selection--single:focus {
 
 .counter-card {
     position: relative;
-    background-color: #E9F6F9;
-    padding: 93px 28px;
+    background-color: #fff6ee;
+    padding: 70px 28px;
     width: 264px;
     height: 264px;
     display: block;
@@ -24482,7 +24482,7 @@ span.select2-selection.select2-selection--single:focus {
     height: 24px;
     display: block;
     border-radius: 50%;
-    background-color: rgba(28, 168, 203, 0.2);
+    background-color: rgb(203 148 28 / 20%);
     z-index: 2
 }
 
@@ -24551,7 +24551,7 @@ span.select2-selection.select2-selection--single:focus {
 
 .counter-card .box-number {
     font-weight: 700;
-    font-size: 48px;
+    font-size: 40px;
     line-height: 48px;
     text-transform: capitalize;
     color: var(--black-color2);
@@ -24560,7 +24560,7 @@ span.select2-selection.select2-selection--single:focus {
 
 .counter-card .counter-title {
     font-weight: 500;
-    font-size: 24px;
+    font-size: 20px;
     line-height: 36px;
     color: var(--black-color2)
 }

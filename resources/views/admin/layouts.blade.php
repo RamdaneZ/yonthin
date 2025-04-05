@@ -42,7 +42,7 @@
                 <a href="{{ url('admin/products') }}">Liste des produits</a>
               </div>
             </li>
-            <li class="menu-item"><a class="menu-link" disabled="" href="{{ url('admin/devis') }}"><i class="icon material-icons md-money"></i><span class="text">Devis</span></a></li>
+            <li class="menu-item"><a class="menu-link" disabled="" href="{{ url('admin/catalogueOrders') }}"><i class="icon material-icons md-money"></i><span class="text">Demandes de catalogue</span></a></li>
             <li class="menu-item"><a class="menu-link" disabled="" href="{{ url('admin/messages') }}"><i class="icon material-icons md-message"></i><span class="text">Messages</span></a></li>
             <li class="menu-item has-submenu"><a class="menu-link" href="#"><i class="icon material-icons md-person"></i><span class="text">Administrateurs</span></a>
               <div class="submenu">
