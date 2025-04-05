@@ -1249,7 +1249,7 @@ textarea {
     position: absolute;
     right: 35px;
     top: 17px;
-    font-size: 14px;
+    width: 20px;
     color: var(--body-color)
 }
 
