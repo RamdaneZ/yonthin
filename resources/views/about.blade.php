@@ -22,7 +22,7 @@
             </div>
             <div class="col-xl-6">
                 <div class="img-box3">
-                    <div class="img3 movingX"><img src="{{ asset('about.jpg') }}" alt="Yonthin about"></div>
+                    <div class="img3 movingX"><img src="{{ asset('about.jpg') }}" alt="Yonthin About"></div>
                 </div>
             </div>
         </div>
