@@ -287,50 +287,40 @@
                             {{ App::getLocale() === 'ar' ? $productTable->name_ar : (App::getLocale() === 'fr' ? $productTable->name_fr : $productTable->name_en) }}
                         </h2>
                     </div>
-                    <table>
-                        <tbody>
+                    <table class="table table-bordered text-center">
+                        <thead>
                             <tr>
                                 @foreach($productTable->columns as $column)
-                                    <td style="background-color:#E95C20;">
-                                        <p style="line-height:2;text-align:center;;margin-bottom:0">
-                                            <span style="font-size:18px;">
-                                                <strong class="text-white">{{ App::getLocale() === 'ar' ? $column->name_ar : (App::getLocale() === 'fr' ? $column->name_fr : $column->name_en) }}</strong>
-                                            </span>
-                                        </p>
-                                    </td>
+                                    <th style="background-color:#E95C20; color:white;">
+                                        {{ App::getLocale() === 'ar' ? $column->name_ar : (App::getLocale() === 'fr' ? $column->name_fr : $column->name_en) }}
+                                    </th>
                                 @endforeach
                             </tr>
-                            <tr>
-                                @foreach($productTable->columns as $column)
-                                    @foreach($column->columnValues as $columnValue)
-                                        <td>
-                                            <p style="line-height:1.2;text-align:center;margin-bottom:0">
-                                                <span style="font-size:18px;">
-                                                    {{-- Decode JSON and access the value based on the current locale --}}
-                                                    @php
-                                                        $values = [
-                                                            'en' => json_decode($columnValue->value_en),
-                                                            'fr' => json_decode($columnValue->value_fr),
-                                                            'ar' => json_decode($columnValue->value_ar)
-                                                        ];
-                                                    @endphp
-
-                                                    {{-- Display the appropriate language value --}}
-                                                    @if(App::getLocale() === 'ar')
-                                                        {{ $values['ar'][0] ?? '' }}
-                                                    @elseif(App::getLocale() === 'fr')
-                                                        {{ $values['fr'][0] ?? '' }}
-                                                    @else
-                                                        {{ $values['en'][0] ?? '' }}
-                                                    @endif
-                                                </span>
-                                            </p>
-                                        </td>
+                        </thead>
+                        <tbody>
+                            @php
+                                $valueCount = $productTable->columns->first()->columnValues->count();
+                            @endphp
+        
+                            @for ($i = 0; $i < $valueCount; $i++)
+                                <tr>
+                                    @foreach($productTable->columns as $column)
+                                        @php
+                                            $columnValue = $column->columnValues[$i] ?? null;
+        
+                                            $value = '';
+                                            if ($columnValue) {
+                                                $value = App::getLocale() === 'ar' ? $columnValue->value_ar :
+                                                         (App::getLocale() === 'fr' ? $columnValue->value_fr : $columnValue->value_en);
+                                            }
+                                        @endphp
+                                        <td>{{ $value }}</td>
                                     @endforeach
-                                @endforeach           
-                            </tr>
+                                </tr>
+                            @endfor
                         </tbody>
                     </table>
+        
                 </div>
             </div>
         @endforeach

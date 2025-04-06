@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Category;
 use App\Models\Column;
+use App\Models\ColumnValue;
 use App\Models\DynamiqueTable;
 use App\Models\Product;
 use Illuminate\Http\Request;
@@ -143,21 +144,34 @@ class ProductController extends Controller
 
             // Store columns for this dynamic table
             foreach ($table['columns'] as $column) {
-                $columnRecord =Column::create([
+                // Create column record
+                $columnRecord = Column::create([
                     'name_ar' => $column['name_ar'],  // Column name in Arabic
                     'name_fr' => $column['name_fr'],  // Column name in French
                     'name_en' => $column['name_en'],  // Column name in English
-                    'table_id' => $dynamicTable->id
+                    'table_id' => $dynamicTable->id   // Associating the column with the dynamic table
                 ]);
 
-                // Store values for the column
-                $columnRecord->columnValues()->create([
-                    'value_en' => json_encode(array_map('trim', $column['values_en'])),
-                    'value_fr' => json_encode(array_map('trim', $column['values_fr'])),
-                    'value_ar' => json_encode(array_map('trim', $column['values_ar'])),
-                ]);
+                // Now store values for the column as rows (not as JSON)
+                $valuesCount = max(count($column['values_en']), count($column['values_fr']), count($column['values_ar']));  // Ensure you cover all values for each language
+
+                // Insert each value for the column in each language
+                for ($i = 0; $i < $valuesCount; $i++) {
+                    $valueEn = $column['values_en'][$i] ?? null;  // Default to null if no value is found
+                    $valueFr = $column['values_fr'][$i] ?? null;
+                    $valueAr = $column['values_ar'][$i] ?? null;
+
+                    // Create a column value record for each language
+                    ColumnValue::create([
+                        'column_id' => $columnRecord->id,
+                        'value_en' => $valueEn,
+                        'value_fr' => $valueFr,
+                        'value_ar' => $valueAr,
+                    ]);
+                }
             }
         }
+
 
         return redirect('admin/products')->with('success', 'Produit crée avec succès');
     }
