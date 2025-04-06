@@ -204,6 +204,51 @@
                                         <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0M8.5 4.5a.5.5 0 0 0-1 0v3h-3a.5.5 0 0 0 0 1h3v3a.5.5 0 0 0 1 0v-3h3a.5.5 0 0 0 0-1h-3z"/>-->
                                     </svg> Ajouter
                                 </button>
+                                <hr>
+                                <!--<form action="" method="POST">-->
+                                <!--    @csrf-->
+                                <!--    <label for="table_name">Table Name</label>-->
+                                <!--    <input type="text" name="table_name" required>-->
+                                
+                                <!--    <h3>Columns and Values</h3>-->
+                                <!--    <div id="columns">-->
+                                <!--        <div class="column">-->
+                                <!--            <input type="text" name="columns[0][name]" placeholder="Column Name" required>-->
+                                <!--            <div id="rows_0">-->
+                                <!--                <input type="text" name="columns[0][values][0]" placeholder="Row Value" required>-->
+                                <!--            </div>-->
+                                <!--            <button type="button" onclick="addRow(0)">Add Row</button>-->
+                                <!--        </div>-->
+                                <!--    </div>-->
+                                
+                                <!--    <button type="button" onclick="addColumn()">Add Column</button>-->
+                                <!--    <button type="submit">Save</button>-->
+                                <!--</form>-->
+
+<!--<script>-->
+<!--    function addColumn() {-->
+<!--        var columnCount = document.querySelectorAll('.column').length;-->
+<!--        var newColumn = `-->
+<!--            <div class="column">-->
+<!--                <input type="text" name="columns[${columnCount}][name]" placeholder="Column Name" required>-->
+<!--                <div id="rows_${columnCount}">-->
+<!--                    <input type="text" name="columns[${columnCount}][values][0]" placeholder="Row Value" required>-->
+<!--                </div>-->
+<!--                <button type="button" onclick="addRow(${columnCount})">Add Row</button>-->
+<!--            </div>-->
+<!--        `;-->
+<!--        document.getElementById('columns').insertAdjacentHTML('beforeend', newColumn);-->
+<!--    }-->
+
+<!--    function addRow(columnIndex) {-->
+<!--        var rowCount = document.querySelectorAll(`#rows_${columnIndex} input`).length;-->
+<!--        var newRow = `-->
+<!--            <input type="text" name="columns[${columnIndex}][values][${rowCount}]" placeholder="Row Value" required>-->
+<!--        `;-->
+<!--        document.getElementById(`rows_${columnIndex}`).insertAdjacentHTML('beforeend', newRow);-->
+<!--    }-->
+<!--</script>-->
+
                               </div>
                             </div><br>
                             <button class="btn btn-primary" type="submit"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
