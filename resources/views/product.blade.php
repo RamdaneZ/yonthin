@@ -170,9 +170,7 @@
                         {{ App::getLocale() === 'ar' ? $product->name_ar : (App::getLocale() === 'fr' ? $product->name_fr : $product->name_en) }}
                     </h3>
                     <hr>
-                    <p class="box-text mb-30">
-                        {{ App::getLocale() === 'ar' ? $product->description_ar : (App::getLocale() === 'fr' ? $product->description_fr : $product->description_en) }}
-                    </p>
+                    <p class="box-text mb-30" style="white-space: pre-line;">{{ App::getLocale() === 'ar' ? $product->description_ar : (App::getLocale() === 'fr' ? $product->description_fr : $product->description_en) }}</p>
                     <div class="checklist mb-50">
                         <ul>
                             @foreach ($advantages as $advantage)
@@ -213,23 +211,40 @@
                     </div>
                 </div>
             @endif
-            <section class="position-relative overflow-hidden space" id="service-sec">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-lg-12">
-                            <div class="title-area text-center">
-                                <h3 class="sec-title">What can I do with YONTHIN embroidery machine?</h3>
-                                <p class="sec-text text-center" style="white-space: pre-wrap">Imagination is infinite, as
-                                    long as it can fit into the embroidery frame, you can embroider.
-                                    Using YONTHIN embroidery to make fashion, wedding dresses, children's clothing, home
-                                    textiles, knitting, leather, etc.</p>
+            @php
+                // Get the description based on the current locale
+                $whatCanDoDescription = null;
+            
+                if (App::getLocale() === 'ar' && $product->whatCanDoSection_ar) {
+                    $whatCanDoDescription = $product->whatCanDoSection_ar;
+                } elseif (App::getLocale() === 'fr' && $product->whatCanDoSection_fr) {
+                    $whatCanDoDescription = $product->whatCanDoSection_fr;
+                } elseif (App::getLocale() === 'en' && $product->whatCanDoSection_en) {
+                    $whatCanDoDescription = $product->whatCanDoSection_en;
+                }
+            @endphp
+            
+            @if($whatCanDoDescription || $product->whatCanDoSection_image)
+                <section class="position-relative overflow-hidden space" id="service-sec">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <div class="title-area text-center">
+                                    <h3 class="sec-title">What can I do with YONTHIN embroidery machine?</h3>
+                                    @if($whatCanDoDescription)
+                                        <p class="sec-text text-center" style="white-space: pre-line;line-height:18px">{{ $whatCanDoDescription }}</p>
+                                    @endif
+                                </div>
                             </div>
                         </div>
+                        @if($product->whatCanDoSection_image)
+                            <img src="{{ asset('storage/products/whatWeCanDoSection/'.$product->whatCanDoSection_image) }}" style="width:100%">
+                        @endif
                     </div>
-                    <img src="{{ asset('test.jpg') }}" alt="">
-                </div>
-            </section>
-            <div class="position-relative overflow-hidden">
+                </section>
+            @endif
+            @if($productFeatures != null)
+                <div class="position-relative overflow-hidden">
                 <div class="container">
                     <div class="title-area text-center">
                         <h2 class="sec-title">Product Features</h2>
@@ -245,14 +260,15 @@
                             <tr>
                                 <td>
                                     <ul class="mt-3">
-                                        <li style="line-height:1.3;">
-                                            <span style="font-size:18px;padding-top:20px">
-                                                <span>Top and bottom
-                                                    gears adopt oil-soaking to reduce abrasion and noise, then improve their
-                                                    precision and life.
+                                        @foreach($productFeatures as $productFeature)
+                                            <li style="margin:15px 0">
+                                                <span style="font-size:18px;color:black">
+                                                    <span>
+                                                        {{ $productFeature }}
+                                                    </span>
                                                 </span>
-                                            </span>
-                                        </li>
+                                            </li>
+                                        @endforeach
                                     </ul>
                                 </td>
                             </tr>
@@ -261,6 +277,7 @@
 
                 </div>
             </div>
+            @endif
             <div>
                 <form action="{{ url('catalogue/store') }}" method="POST" class="contact-form style2">
                     @csrf

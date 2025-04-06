@@ -67,12 +67,15 @@ class MainController extends Controller
     
         $locale = app()->getLocale(); // 'ar', 'fr', 'en'
         $advField = 'adv_' . $locale;
+        $featuresField = 'product_features_' . $locale;
     
         $advantages = json_decode($product->$advField, true); // decode to array
+        $productFeatures = json_decode($product->$featuresField, true); // decode to array
     
         return view('product')->with([
             'product' => $product,
-            'advantages' => $advantages
+            'advantages' => $advantages,
+            'productFeatures' => $productFeatures,
         ]);
     }
     

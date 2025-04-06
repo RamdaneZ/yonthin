@@ -17,6 +17,9 @@ class Product extends Model
         'adv_en',
         'adv_fr',
         'adv_ar',
+        'product_features_en',
+        'product_features_fr',
+        'product_features_ar',
         'image',
         'image2',
         'image3',
@@ -27,6 +30,7 @@ class Product extends Model
         'whatCanDoSection_en',
         'whatCanDoSection_fr',
         'whatCanDoSection_ar',
+        'whatCanDoSection_image',
         'slug',
         'actif',
     ];

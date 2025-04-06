@@ -23,6 +23,9 @@ return new class extends Migration
             $table->json('adv_en')->nullable();
             $table->json('adv_fr')->nullable();
             $table->json('adv_ar')->nullable();
+            $table->json('product_features_en')->nullable();
+            $table->json('product_features_fr')->nullable();
+            $table->json('product_features_ar')->nullable();
             $table->string('image');
             $table->string('image2')->nullable();
             $table->string('image3')->nullable();
@@ -33,6 +36,7 @@ return new class extends Migration
             $table->longText('whatCanDoSection_en')->nullable();
             $table->longText('whatCanDoSection_fr')->nullable();
             $table->longText('whatCanDoSection_ar')->nullable();
+            $table->string('whatCanDoSection_image')->nullable();
             $table->string('slug');
             $table->boolean('actif')->default(true);
             $table->timestamps();

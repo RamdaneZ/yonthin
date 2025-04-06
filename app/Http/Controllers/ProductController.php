@@ -46,6 +46,13 @@ class ProductController extends Controller
             'image5' => ['nullable', 'mimes:jpeg,jpg,png,webp,svg,gif'],
             'image6' => ['nullable', 'mimes:jpeg,jpg,png,webp,svg,gif'],
             'video' => ['nullable', 'mimes:mp4,mov,ogg,webm'],
+            'whatCanDoSection_ar' => ['nullable', 'string'],
+            'whatCanDoSection_fr' => ['nullable', 'string'],
+            'whatCanDoSection_en' => ['nullable', 'string'],
+            'whatCanDoSection_image' => ['nullable','mimes:jpeg,jpg,png,webp,svg,gif'],
+            'product_features_en' => ['nullable', 'array'],
+            'product_features_fr' => ['nullable', 'array'],
+            'product_features_ar' => ['nullable', 'array'],
         ]);
     
         $manager = new ImageManager(new Driver());
@@ -71,11 +78,25 @@ class ProductController extends Controller
             $videoPath = 'products/videos/' . $videoName;
             Storage::disk('public')->putFileAs('products/videos', $video, $videoName);
         }
+        
+       // Handle 'whatCanDoSection_image'
+        $whatCanDoSectionImage = null;
+        if ($request->hasFile('whatCanDoSection_image')) {
+            $file = $request->file('whatCanDoSection_image');
+            $fileName = time() . '_whatCanDoSection.' . $file->getClientOriginalExtension();
+            Storage::disk('public')->putFileAs('products/whatWeCanDoSection', $file, $fileName);
+            $whatCanDoSectionImage = $fileName; // Store the file name in the database
+        }
     
         // Advantages formatting
         $adv_ar = $request->adv_ar ? json_encode(array_map('trim', explode(',', $request->adv_ar))) : null;
         $adv_fr = $request->adv_fr ? json_encode(array_map('trim', explode(',', $request->adv_fr))) : null;
         $adv_en = $request->adv_en ? json_encode(array_map('trim', explode(',', $request->adv_en))) : null;
+    
+        // Handle product features for each language (English, French, Arabic)
+        $features_en = $request->product_features_en ? json_encode(array_map('trim', $request->product_features_en)) : null;
+        $features_fr = $request->product_features_fr ? json_encode(array_map('trim', $request->product_features_fr)) : null;
+        $features_ar = $request->product_features_ar ? json_encode(array_map('trim', $request->product_features_ar)) : null;
     
         // Create product
         Product::create([
@@ -89,6 +110,9 @@ class ProductController extends Controller
             'adv_ar' => $adv_ar,
             'adv_fr' => $adv_fr,
             'adv_en' => $adv_en,
+            'product_features_en' => $features_en,
+            'product_features_fr' => $features_fr,
+            'product_features_ar' => $features_ar,
             'slug' => Str::slug($request->name_en),
             'image' => $images['image'] ?? null,
             'image2' => $images['image2'] ?? null,
@@ -97,12 +121,14 @@ class ProductController extends Controller
             'image5' => $images['image5'] ?? null,
             'image6' => $images['image6'] ?? null,
             'video' => $videoName,
+            'whatCanDoSection_ar' => $request->whatCanDoSection_ar,
+            'whatCanDoSection_fr' => $request->whatCanDoSection_fr,
+            'whatCanDoSection_en' => $request->whatCanDoSection_en,
+            'whatCanDoSection_image' => $whatCanDoSectionImage,
         ]);
     
         return redirect('admin/products')->with('success', 'Produit crée avec succès');
     }
-    
-
 
     public function update(Product $product, Request $request) {
         // Validate the request

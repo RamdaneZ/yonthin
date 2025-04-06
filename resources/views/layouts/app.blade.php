@@ -28,7 +28,7 @@
     <link rel="stylesheet" href="{{ asset('assets/css/swiper-bundle.min.css') }}" media="print" onload="this.media='all'">
     
     <!-- Language-based Stylesheet -->
-    <link rel="stylesheet" href="{{ asset(App::getLocale() == 'ar' ? 'assets/css/style rtl.css' : 'assets/css/style.css') }}">
+    <link rel="stylesheet" href="{{ asset(App::getLocale() == 'ar' ? 'assets/css/new-style rtl.css' : 'assets/css/new-style.css') }}">
 
 </head>
 
