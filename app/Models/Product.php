@@ -34,4 +34,10 @@ class Product extends Model
         'slug',
         'actif',
     ];
+
+    public function tables()
+    {
+        return $this->hasMany(DynamiqueTable::class, 'product_id');
+    }
+
 }

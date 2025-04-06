@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Category;
+use App\Models\Column;
+use App\Models\DynamiqueTable;
 use App\Models\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
@@ -53,6 +55,8 @@ class ProductController extends Controller
             'product_features_en' => ['nullable', 'array'],
             'product_features_fr' => ['nullable', 'array'],
             'product_features_ar' => ['nullable', 'array'],
+            'tables' => ['required', 'array'],
+
         ]);
     
         $manager = new ImageManager(new Driver());
@@ -99,7 +103,7 @@ class ProductController extends Controller
         $features_ar = $request->product_features_ar ? json_encode(array_map('trim', $request->product_features_ar)) : null;
     
         // Create product
-        Product::create([
+        $product = Product::create([
             'name_ar' => $request->name_ar,
             'name_fr' => $request->name_fr,
             'name_en' => $request->name_en,
@@ -126,7 +130,35 @@ class ProductController extends Controller
             'whatCanDoSection_en' => $request->whatCanDoSection_en,
             'whatCanDoSection_image' => $whatCanDoSectionImage,
         ]);
-    
+
+        // Store dynamic tables and columns
+        foreach ($request->tables as $table) {
+            // Create dynamic table record
+            $dynamicTable = DynamiqueTable::create([
+                'name_fr' => $table['name_fr'],  // Accessing as array
+                'name_en' => $table['name_en'],
+                'name_ar' => $table['name_ar'],
+                'product_id' => $product->id,  // Associating the dynamic table with the product
+            ]);
+
+            // Store columns for this dynamic table
+            foreach ($table['columns'] as $column) {
+                $columnRecord =Column::create([
+                    'name_ar' => $column['name_ar'],  // Column name in Arabic
+                    'name_fr' => $column['name_fr'],  // Column name in French
+                    'name_en' => $column['name_en'],  // Column name in English
+                    'table_id' => $dynamicTable->id
+                ]);
+
+                // Store values for the column
+                $columnRecord->columnValues()->create([
+                    'value_en' => json_encode(array_map('trim', $column['values_en'])),
+                    'value_fr' => json_encode(array_map('trim', $column['values_fr'])),
+                    'value_ar' => json_encode(array_map('trim', $column['values_ar'])),
+                ]);
+            }
+        }
+
         return redirect('admin/products')->with('success', 'Produit crée avec succès');
     }
 

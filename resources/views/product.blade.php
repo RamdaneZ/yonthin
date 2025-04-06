@@ -245,39 +245,97 @@
             @endif
             @if($productFeatures != null)
                 <div class="position-relative overflow-hidden">
+                    <div class="container">
+                        <div class="title-area text-center">
+                            <h2 class="sec-title">Product Features</h2>
+                        </div>
+                        <table>
+                            <colgroup>
+                                <col style="width:100%;">
+                            </colgroup>
+                            <tbody>
+                                <tr>
+                                    <td style="background-color:#E95C20;">&nbsp;</td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <ul class="mt-3">
+                                            @foreach($productFeatures as $productFeature)
+                                                <li style="margin:15px 0">
+                                                    <span style="font-size:18px;color:black">
+                                                        <span>
+                                                            {{ $productFeature }}
+                                                        </span>
+                                                    </span>
+                                                </li>
+                                            @endforeach
+                                        </ul>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                    </div>
+                </div>
+            @endif
+
+            @foreach($product->tables as $productTable)
+            <div class="position-relative overflow-hidden">
                 <div class="container">
                     <div class="title-area text-center">
-                        <h2 class="sec-title">Product Features</h2>
+                        <h2 class="sec-title">
+                            {{ App::getLocale() === 'ar' ? $productTable->name_ar : (App::getLocale() === 'fr' ? $productTable->name_fr : $productTable->name_en) }}
+                        </h2>
                     </div>
                     <table>
-                        <colgroup>
-                            <col style="width:100%;">
-                        </colgroup>
                         <tbody>
                             <tr>
-                                <td style="background-color:#E95C20;">&nbsp;</td>
+                                @foreach($productTable->columns as $column)
+                                    <td style="background-color:#E95C20;">
+                                        <p style="line-height:2;text-align:center;;margin-bottom:0">
+                                            <span style="font-size:18px;">
+                                                <strong class="text-white">{{ App::getLocale() === 'ar' ? $column->name_ar : (App::getLocale() === 'fr' ? $column->name_fr : $column->name_en) }}</strong>
+                                            </span>
+                                        </p>
+                                    </td>
+                                @endforeach
                             </tr>
                             <tr>
-                                <td>
-                                    <ul class="mt-3">
-                                        @foreach($productFeatures as $productFeature)
-                                            <li style="margin:15px 0">
-                                                <span style="font-size:18px;color:black">
-                                                    <span>
-                                                        {{ $productFeature }}
-                                                    </span>
+                                @foreach($productTable->columns as $column)
+                                    @foreach($column->columnValues as $columnValue)
+                                        <td>
+                                            <p style="line-height:1.2;text-align:center;margin-bottom:0">
+                                                <span style="font-size:18px;">
+                                                    {{-- Decode JSON and access the value based on the current locale --}}
+                                                    @php
+                                                        $values = [
+                                                            'en' => json_decode($columnValue->value_en),
+                                                            'fr' => json_decode($columnValue->value_fr),
+                                                            'ar' => json_decode($columnValue->value_ar)
+                                                        ];
+                                                    @endphp
+
+                                                    {{-- Display the appropriate language value --}}
+                                                    @if(App::getLocale() === 'ar')
+                                                        {{ $values['ar'][0] ?? '' }}
+                                                    @elseif(App::getLocale() === 'fr')
+                                                        {{ $values['fr'][0] ?? '' }}
+                                                    @else
+                                                        {{ $values['en'][0] ?? '' }}
+                                                    @endif
                                                 </span>
-                                            </li>
-                                        @endforeach
-                                    </ul>
-                                </td>
+                                            </p>
+                                        </td>
+                                    @endforeach
+                                @endforeach           
                             </tr>
                         </tbody>
                     </table>
-
                 </div>
             </div>
-            @endif
+        @endforeach
+        
+
             <div>
                 <form action="{{ url('catalogue/store') }}" method="POST" class="contact-form style2">
                     @csrf
