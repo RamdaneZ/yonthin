@@ -31,31 +31,28 @@ class CategoryController extends Controller
             'name_en' => ['required', 'string', 'max:255'],
             'image' => ['required', 'mimes:jpeg,jpg,png,webp,svg,gif'],
         ]);
-    
+
         $image = $request->file('image');
-        
         $fileName = time() . ".webp";
-    
-        // Create an instance of ImageManager with GD driver
+
         $manager = new ImageManager(new Driver());
-    
-        // Convert and encode the image to WebP format
         $encoded = $manager->read($image->getPathname())->toWebp(60);
-    
         Storage::disk('public')->put('categories/' . $fileName, $encoded->toString()); 
-        
+
         Category::create([
             'name_ar' => $request->name_ar,
             'name_fr' => $request->name_fr,
             'name_en' => $request->name_en,
             'slug' => Str::slug($request->name_en),
-            'image' => $fileName,  // Store the path in the DB
+            'image' => $fileName,
         ]);
-    
-        return redirect('admin/categories')->with('success', 'Catégorie créé avec succès');
+
+        return response()->json([
+            'redirect' => url('admin/categories'), // or use '/admin/categories'
+            'message' => 'Catégorie créée avec succès'
+        ]);
     }
 
-    
     public function update(Category $id, Request $request){
         $request->validate([
             'name_ar' => ['required', 'string', 'max:255'],
@@ -63,43 +60,35 @@ class CategoryController extends Controller
             'name_en' => ['required', 'string', 'max:255'],
             'image' => ['nullable', 'mimes:jpeg,jpg,png,webp,svg,gif'],
         ]);
-    
-        // Check if a new image has been uploaded
+
         if ($request->hasFile('image')) {
             $image = $request->file('image');
-            
-            // Generate the file name for the new WebP image
             $fileName = time() . ".webp";
-            
-            // Create an instance of ImageManager to handle image conversion
+
             $manager = new ImageManager(new Driver());
-    
-            // Convert and encode the image to WebP format
             $encoded = $manager->read($image->getPathname())->toWebp(60);
-            
             Storage::disk('public')->put('categories/' . $fileName, $encoded->toString());
-            
-            // Delete the old image from storage if it exists
-            if ($id->image && file_exists(public_path('categories/' . $id->image))) {
-                unlink(public_path('categories/' . $id->image));
+
+            if ($id->image && Storage::disk('public')->exists('categories/' . $id->image)) {
+                Storage::disk('public')->delete('categories/' . $id->image);
             }
         } else {
-            // Keep the old image if no new image is uploaded
             $fileName = $id->image;
         }
-    
-        // Update the category record with new data
+
         $id->update([
             'name_ar' => $request->name_ar,
             'name_fr' => $request->name_fr,
             'name_en' => $request->name_en,
             'slug' => Str::slug($request->name_en),
-            'image' => $fileName,  // Store the file name in the DB
+            'image' => $fileName,
         ]);
-    
-        return redirect('admin/categories')->with('success', 'Catégorie modifiée avec succès');
-    }
 
+        return response()->json([
+            'redirect' => url('admin/categories/'), // or '/admin/categories'
+            'message' => 'Catégorie modifiée avec succès'
+        ]);
+    }
 
     public function delete(Category $id){
         // Delete the image files from the public directory if they exist

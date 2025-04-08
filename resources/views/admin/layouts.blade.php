@@ -10,7 +10,20 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-modal/2.2.6/css/bootstrap-modal.css" integrity="sha512-/McvCinmK3R9FGlXhgOuEF4gMqRpK5u8ais4WJEX3utoNrVIM336ftao6YuuopZKaX3K3XtnWBUI5qfrHsHioQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
   </head>
   <body>
-    <div class="screen-overlay"></div>
+    <div class="screen-overlay w-100">
+      <div class="progress" style="position: absolute;top: 50%;z-index: 9999;left: 50%;transform: translate(-50%, -50%);width: 70%;height: 25px;line-height: 2;">
+          <div class="bar" style="background:#75a8d6"></div><br>
+          <div class="percent" style="position:absolute;left: 50%;color: white;">0%</div>
+      </div>
+      <p style="position: absolute;
+    z-index: 99;
+    left: 50%;
+    transform: translate(-50%, 50%);
+    top: 50%;
+    color: white;
+    font-size: 20px;
+    margin-top: 10px;">Veuillez patienter...</p>
+    </div>
     <aside class="navbar-aside" id="offcanvas_aside">
       <div class="aside-top"><a class="brand-wrap" href="{{ url('admin/dashboard') }}"><img class="logo" style="min-width:unset;width:140px;max-width:unset;margin-left: 10px;object-fit:contain" src="{{ asset('logo-dark.png') }}" alt="YONTHIN"></a>
         <div>
@@ -99,6 +112,43 @@
           $(".delete").click(function(){
             alert('Voulez-vous vraiment supprimer cet element ?');
           });
+
+          if ($('form input[type="file"]').length > 0) {
+              $('form').ajaxForm({
+                  beforeSend: function(){
+                      $('form button[type="submit"]').prop('disabled', true);
+
+                      $('.screen-overlay').css({
+                          visibility: 'visible',
+                          opacity: '1',
+                          width: '100%'
+                      });
+
+                      let percentVal = '0%';
+                      $('.bar').width(percentVal);
+                      $('.percent').html(percentVal);
+                  },
+                  uploadProgress: function(event, position, total, percentComplete){
+                      let percentVal = percentComplete + '%';
+                      $('.bar').width(percentVal);
+                      $('.percent').html(percentVal);
+                  },
+                  success: function(response) {
+                      if (response.redirect) {
+                          window.location.replace(response.redirect);
+                      }
+                  },
+                  error: function(xhr) {
+                      $('.screen-overlay').css({
+                          visibility: 'hidden',
+                          opacity: '0',
+                          width: '0'
+                      });
+                      console.error("Upload failed", xhr);
+                  }
+              });
+          }
+
       });
     </script>
     @yield('script')

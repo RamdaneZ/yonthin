@@ -172,8 +172,10 @@ class ProductController extends Controller
             }
         }
 
-
-        return redirect('admin/products')->with('success', 'Produit crée avec succès');
+        return response()->json([
+            'redirect' => url('admin/products/'), // or '/admin/categories'
+            'message' => 'Produit crée avec succès'
+        ]);
     }
 
     public function update(Product $product, Request $request) {
@@ -244,8 +246,11 @@ class ProductController extends Controller
             'category_id' => $request->category_id,
             'slug' => Str::slug($request->name_en),
         ], $updatedImages));
-    
-        return redirect('admin/products')->with('success', 'Produit modifiée avec succès');
+
+        return response()->json([
+            'redirect' => url('admin/products/'), // or '/admin/categories'
+            'message' => 'Produit modifiée avec succès'
+        ]);
     }
 
     public function delete(Category $id){
