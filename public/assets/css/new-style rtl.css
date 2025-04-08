@@ -30516,12 +30516,13 @@ span.select2-selection.select2-selection--single:focus {
 
 .feature-item {
     position: relative;
-    background: #E9F6F9;
+    background: #f9efe9;
     border-radius: 24px;
     padding: 24px;
     text-align: center;
     -webkit-transition: all 0.4s ease-in-out;
-    transition: all 0.4s ease-in-out
+    transition: all 0.4s ease-in-out;
+    height: 100%;
 }
 
 .feature-item_icon {
@@ -30531,7 +30532,7 @@ span.select2-selection.select2-selection--single:focus {
     text-align: center;
     display: block;
     margin: auto;
-    background: rgba(28, 168, 203, 0.1);
+    background: rgb(203 126 28 / 10%);
     border-radius: 50px;
     margin-bottom: 24px
 }

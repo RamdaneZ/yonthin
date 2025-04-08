@@ -87,10 +87,9 @@
     <div class="slider-drag-cursor"><i class="fas fa-angle-left me-2"></i> DRAG <i class="fas fa-angle-right ms-2"></i>
     </div>
     @php
-        $whatsappNumber = preg_replace('/[^0-9]/', '', "05521919191"); // Remove all non-numeric characters
+        $whatsappNumber = preg_replace('/[^0-9]/', '', $infos->whatsapp);
 
-        // Ensure the number starts with the country code
-        if (substr($whatsappNumber, 0, 2) !== '213') { // Assuming Algeria (+213) as an example
+        if (substr($whatsappNumber, 0, 2) !== '213') {
             $whatsappNumber = '213' . $whatsappNumber; 
         }
     @endphp

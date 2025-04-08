@@ -92,6 +92,7 @@ class AdminController extends Controller
             'phone' => $request->phone,
             'email' => $request->email,
             'address' => $request->address,
+            'whatsapp' => $request->whatsapp,
             'facebook' => $request->facebook,
             'instagram' => $request->instagram,
             'linkedin' => $request->linkedin,

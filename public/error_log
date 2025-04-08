@@ -3,3 +3,4 @@
 Stack trace:
 #0 {main}
   thrown in /home/zrsobvvm/yonthin.zr-solution.com/public/index.php on line 14
+[08-Apr-2025 14:04:51 UTC] PHP Fatal error:  Cannot use isset() on the result of an expression (you can use "null !== expression" instead) in /home/zrsobvvm/yonthin.zr-solution.com/storage/framework/views/69f7f417ce364af97b71ec59dc04285b.php on line 133

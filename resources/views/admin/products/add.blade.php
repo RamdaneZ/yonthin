@@ -162,7 +162,7 @@
                                         <label class="form-label">Image</label>
                                         <div class="input-upload">
                                             <img src="{{ asset('app/imgs/theme/upload.svg') }}" alt="Image">
-                                            <input name="whatCanDoSection_image" class="form-control" type="file" accept="image/*" required>
+                                            <input name="whatCanDoSection_image" class="form-control" type="file" accept="image/*">
                                             <div class="progress">
                                                 <div class="bar" style="background:#75a8d6"></div><br>
                                                 <div class="percent" style="position:absolute;left: 50%;color: white;">0%</div>
@@ -499,25 +499,6 @@
 @section('script')
 <script>
     $(document).ready(function(){
-        let bar = $(".bar");
-        let percent  = $(".percent");
-
-        // $('form').ajaxForm({
-        //     beforeSend:function(){
-        //         let percentVal = '0%';
-        //         bar.width(percentVal);
-        //         percent.html(percentVal);
-        //     },
-        //     uploadProgress:function(event, position, total, percentComplete){
-        //         var percentVal = percentComplete+'%';
-        //         bar.width(percentVal);
-        //         percent.html(percentVal);
-        //     },
-        //     complete:function(){
-        //         window.location.replace("/admin/products");
-        //     }
-        // });
-
        $('#add-feature').click(function(e) {
             e.preventDefault();
             $('#features-wrapper').append(`
