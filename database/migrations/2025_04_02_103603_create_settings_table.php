@@ -20,6 +20,7 @@ return new class extends Migration
             $table->string('instagram')->nullable();
             $table->string('linkedin')->nullable();
             $table->string('tiktok')->nullable();
+            $table->string('whatsapp')->nullable();
             $table->timestamps();
         });
     }

@@ -234,9 +234,9 @@
                                         <hr>
                                         <!-- Ajouter les colonnes -->
                                         <div class="form-group">
-                                            <h5 class="mb-2">Colonnes pour le tableau 1</h5>
                                             <div id="columns_1">
                                                 <div class="column-section mb-3">
+                                                    <h6 class="mb-3 text-primary">🧾 Nom de la colonne</h6>
                                                     <div class="row mb-2">
                                                         <div class="col-md-4">
                                                             <label for="tables[0][columns][0][name]">Nom de la colonne (Anglais)</label>
@@ -251,7 +251,7 @@
                                                             <input type="text" name="tables[0][columns][0][name_ar]" class="form-control" placeholder="Nom de la colonne (Arabe)" required>
                                                         </div>
                                                     </div>
-                                                    
+                                                    <h6 class="mb-3 text-success">📋 Lignes de la colonne</h6>
                                                     <!-- Champs pour les lignes de cette colonne -->
                                                     <div id="rows_1_0" class="mb-2">
                                                         <div class="row mb-2">
@@ -300,25 +300,28 @@
                                                     </button>
                                                 </h4>
                                 
-                                                <!-- Champs de nom du tableau -->
-                                                <div class="form-group">
-                                                    <label for="name_en_${tableCount}">Nom du tableau (Anglais)</label>
-                                                    <input type="text" id="name_en_${tableCount}" name="tables[${tableCount - 1}][name_en]" class="form-control" placeholder="Nom du tableau (Anglais)" required>
-                                                </div>
-                                
-                                                <div class="form-group">
-                                                    <label for="name_fr_${tableCount}">Nom du tableau (Français)</label>
-                                                    <input type="text" id="name_fr_${tableCount}" name="tables[${tableCount - 1}][name_fr]" class="form-control" placeholder="Nom du tableau (Français)" required>
-                                                </div>
-                                
-                                                <div class="form-group">
-                                                    <label for="name_ar_${tableCount}">Nom du tableau (Arabe)</label>
-                                                    <input type="text" id="name_ar_${tableCount}" name="tables[${tableCount - 1}][name_ar]" class="form-control" placeholder="Nom du tableau (Arabe)" required>
+                                                <div class="row mb-2">
+                                                    <!-- Champs de nom du tableau -->
+                                                    <div class="form-group col-md-4">
+                                                        <label for="name_en_${tableCount}">Nom du tableau (Anglais)</label>
+                                                        <input type="text" id="name_en_${tableCount}" name="tables[${tableCount - 1}][name_en]" class="form-control" placeholder="Nom du tableau (Anglais)" required>
+                                                    </div>
+                                    
+                                                    <div class="form-group col-md-4">
+                                                        <label for="name_fr_${tableCount}">Nom du tableau (Français)</label>
+                                                        <input type="text" id="name_fr_${tableCount}" name="tables[${tableCount - 1}][name_fr]" class="form-control" placeholder="Nom du tableau (Français)" required>
+                                                    </div>
+                                    
+                                                    <div class="form-group col-md-4">
+                                                        <label for="name_ar_${tableCount}">Nom du tableau (Arabe)</label>
+                                                        <input type="text" id="name_ar_${tableCount}" name="tables[${tableCount - 1}][name_ar]" class="form-control" placeholder="Nom du tableau (Arabe)" required>
+                                                    </div>
                                                 </div>
                                 
                                                 <!-- Ajouter des colonnes -->
+                                                <hr>
                                                 <div class="form-group">
-                                                    <h5>Colonnes pour le tableau ${tableCount}</h5>
+                                                    <h6 class="mb-3 text-primary">🧾 Nom de la colonne</h6>
                                                     <div id="columns_${tableCount}">
                                                         <div class="column-section mb-3">
                                                             <div class="row mb-2">
@@ -335,7 +338,7 @@
                                                                     <input type="text" name="tables[${tableCount - 1}][columns][0][name_ar]" class="form-control" placeholder="Nom de la colonne (Arabe)" required>
                                                                 </div>
                                                             </div>
-                                                            
+                                                            <h6 class="mb-3 text-success">📋 Lignes de la colonne</h6>
                                                             <!-- Champs pour les lignes de cette colonne -->
                                                             <div id="rows_${tableCount}_${0}" class="mb-2">
                                                                 <div class="row mb-2">
@@ -348,6 +351,9 @@
                                                                     <div class="col-md-4">
                                                                         <input type="text" name="tables[${tableCount - 1}][columns][0][values_ar][0]" class="form-control" placeholder="Valeur de la ligne (Arabe)" required>
                                                                     </div>
+                                                                    <button type="button" class="btn btn-danger btn-sm mt-1" style="width:fit-content;margin:auto" onclick="deleteRow(this)">
+                                                                        <i class="fas fa-trash"></i> Supprimer la ligne
+                                                                    </button>
                                                                 </div>
                                                             </div>
                                                             <button type="button" class="btn btn-secondary btn-sm" onclick="addRow(${tableCount - 1}, 0)">
@@ -371,54 +377,28 @@
                                         table.remove();
                                     }
                                 
-                                    // Ajouter une nouvelle colonne à un tableau spécifique
-                                    function addColumn(tableIndex) {
-                                        let columnCount = document.querySelectorAll(`#columns_${tableIndex + 1} .column-section`).length;
-                                        let newColumn = `
-                                            <div class="column-section mb-3">
-                                                <div class="row mb-2">
-                                                    <div class="col-md-4">
-                                                        <label for="tables[${tableIndex}][columns][${columnCount}][name_en]">Nom de la colonne (Anglais)</label>
-                                                        <input type="text" name="tables[${tableIndex}][columns][${columnCount}][name_en]" class="form-control" placeholder="Nom de la colonne" required>
-                                                    </div>
-                                                    <div class="col-md-4">
-                                                        <label for="tables[${tableIndex}][columns][${columnCount}][name_fr]">Nom de la colonne (Français)</label>
-                                                        <input type="text" name="tables[${tableIndex}][columns][${columnCount}][name_fr]" class="form-control" placeholder="Nom de la colonne (Français)" required>
-                                                    </div>
-                                                    <div class="col-md-4">
-                                                        <label for="tables[${tableIndex}][columns][${columnCount}][name_ar]">Nom de la colonne (Arabe)</label>
-                                                        <input type="text" name="tables[${tableIndex}][columns][${columnCount}][name_ar]" class="form-control" placeholder="Nom de la colonne (Arabe)" required>
-                                                    </div>
-                                                </div>
-                                                <div id="rows_${tableIndex + 1}_${columnCount}" class="mb-2">
-                                                    <div class="row mb-2">
-                                                        <div class="col-md-4">
-                                                            <input type="text" name="tables[${tableIndex}][columns][${columnCount}][values_en][0]" class="form-control" placeholder="Valeur de la ligne (Anglais)" required>
-                                                        </div>
-                                                        <div class="col-md-4">
-                                                            <input type="text" name="tables[${tableIndex}][columns][${columnCount}][values_fr][0]" class="form-control" placeholder="Valeur de la ligne (Français)" required>
-                                                        </div>
-                                                        <div class="col-md-4">
-                                                            <input type="text" name="tables[${tableIndex}][columns][${columnCount}][values_ar][0]" class="form-control" placeholder="Valeur de la ligne (Arabe)" required>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <button type="button" class="btn btn-secondary btn-sm" onclick="addRow(${tableIndex}, ${columnCount})">
-                                                    <i class="fas fa-plus"></i> Ajouter une ligne
-                                                </button>
-                                            </div>
-                                        `;
-                                        document.getElementById(`columns_${tableIndex + 1}`).insertAdjacentHTML('beforeend', newColumn);
+                                    // Supprimer une ligne
+                                    function deleteRow(button) {
+                                        const rowGroup = button.closest('.row.mb-2');
+                                        if (rowGroup) {
+                                            rowGroup.remove();
+                                        }
                                     }
                                 
+                                    // Supprimer une colonne
+                                    function deleteColumn(button) {
+                                        const columnSection = button.closest('.column-section');
+                                        if (columnSection) {
+                                            columnSection.remove();
+                                        }
+                                    }
+                                
+                                    // Ajouter une ligne
                                     function addRow(tableIndex, columnIndex) {
-                                        const rowsContainerId = `rows_${tableIndex + 1}_${columnIndex}`;
-                                        const container = document.getElementById(rowsContainerId);
+                                        const rowsContainer = document.getElementById(`rows_${tableIndex + 1}_${columnIndex}`);
+                                        const rowCount = rowsContainer.querySelectorAll('.row.mb-2').length;
                                 
-                                        // Count existing rows to determine the new index
-                                        const rowCount = container.querySelectorAll('.row').length;
-                                
-                                        const rowHtml = `
+                                        const rowHTML = `
                                             <div class="row mb-2">
                                                 <div class="col-md-4">
                                                     <input type="text" name="tables[${tableIndex}][columns][${columnIndex}][values_en][${rowCount}]" class="form-control" placeholder="Valeur de la ligne (Anglais)" required>
@@ -429,11 +409,75 @@
                                                 <div class="col-md-4">
                                                     <input type="text" name="tables[${tableIndex}][columns][${columnIndex}][values_ar][${rowCount}]" class="form-control" placeholder="Valeur de la ligne (Arabe)" required>
                                                 </div>
+                                                <button type="button" class="btn btn-danger btn-sm mt-1" style="width:fit-content;margin:auto" onclick="deleteRow(this)">
+                                                    <i class="fas fa-trash"></i> Supprimer la ligne
+                                                </button>
                                             </div>
                                         `;
                                 
-                                        container.insertAdjacentHTML('beforeend', rowHtml);
+                                        rowsContainer.insertAdjacentHTML('beforeend', rowHTML);
                                     }
+                                
+                                    // Ajouter une colonne
+                                    function addColumn(tableIndex) {
+                                        const columnsContainer = document.getElementById(`columns_${tableIndex + 1}`);
+                                        const columnCount = columnsContainer.querySelectorAll('.column-section').length;
+                                
+                                        const columnHTML = `
+                                            <div class="column-section mb-4 border rounded p-3">
+
+                                                <!-- Titre : Nom de la colonne -->
+                                                <h6 class="mb-3 text-primary">🧾 Nom de la colonne</h6>
+                                                <div class="row mb-4">
+                                                    <div class="col-md-4">
+                                                        <label>Anglais</label>
+                                                        <input type="text" name="tables[${tableIndex}][columns][${columnCount}][name_en]" class="form-control" required>
+                                                    </div>
+                                                    <div class="col-md-4">
+                                                        <label>Français</label>
+                                                        <input type="text" name="tables[${tableIndex}][columns][${columnCount}][name_fr]" class="form-control" required>
+                                                    </div>
+                                                    <div class="col-md-4">
+                                                        <label>Arabe</label>
+                                                        <input type="text" name="tables[${tableIndex}][columns][${columnCount}][name_ar]" class="form-control" required>
+                                                    </div>
+                                                </div>
+
+                                                <!-- Titre : Lignes de la colonne -->
+                                                <h6 class="mb-3 text-success">📋 Lignes de la colonne</h6>
+                                                <div id="rows_${tableIndex + 1}_${columnCount}" class="mb-3">
+                                                    <div class="row mb-2">
+                                                        <div class="col-md-4">
+                                                            <input type="text" name="tables[${tableIndex}][columns][${columnCount}][values_en][0]" class="form-control" placeholder="Valeur EN" required>
+                                                        </div>
+                                                        <div class="col-md-4">
+                                                            <input type="text" name="tables[${tableIndex}][columns][${columnCount}][values_fr][0]" class="form-control" placeholder="Valeur FR" required>
+                                                        </div>
+                                                        <div class="col-md-4">
+                                                            <input type="text" name="tables[${tableIndex}][columns][${columnCount}][values_ar][0]" class="form-control" placeholder="Valeur AR" required>
+                                                        </div>
+                                                        <button type="button" class="btn btn-danger btn-sm" style="width:fit-content;margin:auto" onclick="deleteRow(this)">
+                                                            <i class="fas fa-trash"></i> Supprimer la ligne
+                                                        </button>
+                                                    </div>
+                                                </div>
+
+                                                <!-- Boutons -->
+                                                <div class="d-flex justify-content-between">
+                                                    <button type="button" class="btn btn-secondary btn-sm" onclick="addRow(${tableIndex}, ${columnCount})">
+                                                        <i class="fas fa-plus"></i> Ajouter une ligne
+                                                    </button>
+                                                    <button type="button" class="btn btn-danger btn-sm" onclick="deleteColumn(this)">
+                                                        <i class="fas fa-trash"></i> Supprimer la colonne
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        `;
+
+                                
+                                        columnsContainer.insertAdjacentHTML('beforeend', columnHTML);
+                                    }
+
                                 </script>
                                 
                                 

@@ -14,5 +14,6 @@ class Setting extends Model
         'instagram',
         'linkedin',
         'tiktok',
+        'whatsapp'
     ];
 }
