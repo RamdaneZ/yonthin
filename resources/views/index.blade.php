@@ -107,7 +107,7 @@
                                 <h3 class="box-title">
                                     <a href="{{ url('category/'.$category->slug) }}">{{ App::getLocale() === 'ar' ? $category->name_ar : (App::getLocale() === 'fr' ? $category->name_fr : $category->name_en) }}</a>
                                 </h3>
-                                <a class="th-btn style1" href="{{ url('category/'.$category->slug) }}">See more</a>
+                                <a class="th-btn style1" href="{{ url('category/'.$category->slug) }}">{{__('custom.see-more')}}</a>
                             </div>
                         </div>
                     @endforeach
@@ -124,15 +124,8 @@
                     <div class="text-center text-lg-start">
                         <div class="title-area pe-xl-5">
                             <h2 class="sec-title text-white">{{__('custom.about us') }}</h2>
-                            <p class="contact-text2 text-white">Yonthin is a leading manufacturer of computerized embroidery machines circular knitting machines, and whole garment flat knitting machines.
-
-                                We are dedicated to developing, manufacturing, and supplying innovative solutions tailored to your needs.
-                                
-                                On our website, we invite you to explore our advanced machines designed  for producing high-quality products, as well as specialized reinforcements.
-                                
-                                If you have any questions or need assistance, our dedicated team is here to help you.
-                            </p>
-                        </div><a href="{{ url('about') }}" class="th-btn style7 th-icon">Learn More</a>
+                            <p class="contact-text2 text-white">{{ __('custom.about_text')}}</p>
+                        </div><a href="{{ url('about') }}" class="th-btn style7 th-icon">{{__('custom.learn-more')}}</a>
                     </div>
                 </div>
                 <div class="col-lg-6">

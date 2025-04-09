@@ -16,6 +16,7 @@
                                     <tr>
                                         <th>N°</th>
                                         <th>Nom</th>
+                                        <th>N°Téléphone</th>
                                         <th>Email</th>
                                         <th>Date</th>
                                         <th class="text-end">Action</th>
@@ -26,6 +27,7 @@
                                         <tr>
                                             <td>{{$msg->id}}</td>
                                             <td>{{$msg->name}}</td>
+                                            <td>{{$msg->phone}}</td>
                                             <td>{{$msg->email}}</td>
                                             <td>{{$msg->created_at}}</td>
                                             <td class="text-end">

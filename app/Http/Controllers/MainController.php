@@ -46,7 +46,6 @@ class MainController extends Controller
         ]);
 
         return back()->with('success-msg','Success');
-        
     }
 
     public function category($slug){
@@ -78,26 +77,21 @@ class MainController extends Controller
             'productFeatures' => $productFeatures,
         ]);
     }
-    
-
-    public function service(string $slug){
-        $service = Service::where('slug',$slug)->first();
-        if($service == null){
-            return back();
-        }
-        return view('service')->with(['service'=>$service]);
-    }
 
     public function sendMessage(Request $request){
         $request->validate([
             'name' => ['required','string','max:255'],
             'email' => ['required','string','email','max:255'],
+            'phone' => ['required','string','max:255'],
+            'address' => ['nullable','string','max:255'],
             'message' => ['required','string'],
         ]);
 
         Message::create([
             'name' => $request->name,
             'email' => $request->email,
+            'phone' => $request->phone,
+            'address' => $request->address,
             'message' => $request->message,
         ]);
 

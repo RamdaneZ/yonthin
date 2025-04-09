@@ -16,8 +16,16 @@
                                 <h5>{{$id->name}}</h5>
                             </div>
                             <div class="col-lg-6 mb-3">
+                                <label class="form-label">Numéro téléphone</label>
+                                <h5><a href="tel:{{$id->phone}}">{{$id->phone}}</a></h5>
+                            </div>
+                            <div class="col-lg-6 mb-3">
                                 <label class="form-label">Email</label>
                                 <h5><a href="mailto:{{$id->email}}">{{$id->email}}</a></h5>
+                            </div>
+                            <div class="col-lg-6 mb-3">
+                                <label class="form-label">Adresse</label>
+                                <h5>@if($id->address) {{$id->address}} @else Vide @endif</h5>
                             </div>
                           <hr>
                         </div>
