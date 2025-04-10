@@ -129,8 +129,14 @@
                     </div>
                 </div>
                 <div class="col-lg-6">
-                    <div class="video-box4"><a href="https://omo-oss-cdn.thefastfile.com/portal-saas/pg2024042513192795616/cms/vedio/d0889d5d-7998-4747-b107-6f07dabac207.mp4?sign=1743614748-5ac99d7019f3bfa39e068d8a6a4bbce3-0-c391e58a3a7da88fa42dbfb0b5abe59e&Expires=1743614748&Signature=tMTk39rEMY2EogppPp35YGVQJLjRpjsjWqWfj3~iYbb4U22UUeHO0lKGO2fuuO838xI2-JCVCoaXnDbiDaq6VO0mbAB2V8E1qwkZMzzlwjHjSWIO-9-qp-jB36CqSX~noJKOrmJMHEtNfKd91ov3tAdcOgNDLggUlPsKYz2UyZZhRfczuWHEMIBtp3fG7I-pdrwJcyDyNFAnr7lfsu6T~zzp67NRLu3ZBMD1WFn1fXP8BUzz~z200l28egfK8oJuABEGZo4rKSeble38KvGgI5OJw4VhKlgL1RqRWU6DmlSgOLeQkukksnM7w03qLIRE~hL4zsNoES1n3jsOSIt-PA&Key-Pair-Id=KITUBNZ25ERQX"
-                            class="play-btn popup-video"><i class="fa-sharp fa-solid fa-play"></i></a></div>
+                    <div class="video-box4">
+                        <a href="https://omo-oss-cdn.thefastfile.com/portal-saas/pg2024042513192795616/cms/vedio/d0889d5d-7998-4747-b107-6f07dabac207.mp4?sign=1743614748-5ac99d7019f3bfa39e068d8a6a4bbce3-0-c391e58a3a7da88fa42dbfb0b5abe59e&Expires=1743614748&Signature=tMTk39rEMY2EogppPp35YGVQJLjRpjsjWqWfj3~iYbb4U22UUeHO0lKGO2fuuO838xI2-JCVCoaXnDbiDaq6VO0mbAB2V8E1qwkZMzzlwjHjSWIO-9-qp-jB36CqSX~noJKOrmJMHEtNfKd91ov3tAdcOgNDLggUlPsKYz2UyZZhRfczuWHEMIBtp3fG7I-pdrwJcyDyNFAnr7lfsu6T~zzp67NRLu3ZBMD1WFn1fXP8BUzz~z200l28egfK8oJuABEGZo4rKSeble38KvGgI5OJw4VhKlgL1RqRWU6DmlSgOLeQkukksnM7w03qLIRE~hL4zsNoES1n3jsOSIt-PA&Key-Pair-Id=KITUBNZ25ERQX" class="play-btn popup-video">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-play-circle" viewBox="0 0 16 16">
+                                <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16"/>
+                                <path d="M6.271 5.055a.5.5 0 0 1 .52.038l3.5 2.5a.5.5 0 0 1 0 .814l-3.5 2.5A.5.5 0 0 1 6 10.5v-5a.5.5 0 0 1 .271-.445"/>
+                             </svg>
+                        </a>
+                    </div>
                 </div>
             </div>
         </div>

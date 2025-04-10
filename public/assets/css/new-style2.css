@@ -1704,7 +1704,7 @@ input[type=time]::-webkit-calendar-picker-indicator {
 }
 
 .currency-menu .nice-select:after {
-    content: "\f107";
+    content: "▼";
     right: 35px;
     top: -19px;
     font-size: 14px;
@@ -2274,7 +2274,7 @@ input[type=time]::-webkit-calendar-picker-indicator {
 }
 
 .th-mobile-menu ul li a:before {
-    content: '\f105';
+    content: '►';
     font-family: var(--icon-font);
     position: absolute;
     left: 0;
@@ -2683,7 +2683,7 @@ input[type=time]::-webkit-calendar-picker-indicator {
 .th-btn.style4 {
     background-color: transparent;
     color: var(--title-color);
-    border: 1px solid var(--title-color:);
+    border: 1px solid var(--title-color);
     padding: 14px 25px
 }
 
@@ -2831,14 +2831,14 @@ input[type=time]::-webkit-calendar-picker-indicator {
     z-index: 1
 }
 
-.play-btn>i {
+.play-btn>svg {
     display: inline-block;
     width: var(--icon-size, 56px);
     height: var(--icon-size, 56px);
     line-height: var(--icon-size, 56px);
     text-align: center;
-    background: var(--white-color);
-    color: var(--title-color);
+    background: var(--theme-color);
+    color: var(--white-color);
     font-size: var(--icon-font-size, 1.7em);
     border-radius: 50%;
     z-index: 1;
@@ -3050,7 +3050,7 @@ input[type=time]::-webkit-calendar-picker-indicator {
 }
 
 .scroll-top:after {
-    content: "\f062";
+    content: "";
     font-family: var(--icon-font);
     position: absolute;
     text-align: center;
@@ -3069,14 +3069,14 @@ input[type=time]::-webkit-calendar-picker-indicator {
     border-radius: 50%
 }
 
-.scroll-top svg {
+.scroll-top .progress-circle {
     color: var(--theme-color);
     border-radius: 50%;
-    background: var(--white-color)
+    background: var(--white-color);
 }
 
-.scroll-top svg path {
-    fill: none
+.scroll-top .progress-circle path {
+    fill: none;
 }
 
 .scroll-top .progress-circle path {
@@ -7347,16 +7347,16 @@ ol.wp-block-rss {
 .footer-widget.widget_archive a:before,
 .footer-widget.widget_categories a:before,
 .footer-widget.widget_nav_menu a:before {
-    content: "\f105";
+    content: "►";
     position: absolute;
     font-weight: 600;
     left: 0;
-    top: 2px;
+    top: 4px;
     font-family: var(--icon-font);
     -webkit-transform: translateY(0);
     -ms-transform: translateY(0);
     transform: translateY(0);
-    font-size: 0.9em;
+    font-size: 0.7em;
     background-color: transparent;
     border: none;
     color: inherit
@@ -7444,7 +7444,7 @@ ol.wp-block-rss {
 }
 
 .th-widget-about .about-logo {
-    margin-bottom: 33px
+    margin-bottom: 14px
 }
 
 .th-widget-about .about-text {
@@ -7785,14 +7785,14 @@ ol.wp-block-rss {
 .main-menu ul li:has(.sub-menu)>a:after,
 .main-menu ul li:has(.mega-menu)>a:after,
 .main-menu ul li.menu-item-has-children>a:after {
-    content: "\f107";
+    content: "▼";
     display: inline-block;
     position: relative;
     font-family: var(--icon-font);
     margin-left: 4px;
     font-weight: 400;
     top: 0;
-    font-size: 0.9em;
+    font-size: 0.7em;
     color: var(--black-color2);
     -webkit-transition: 0.3s ease-in-out;
     transition: 0.3s ease-in-out
@@ -7801,7 +7801,7 @@ ol.wp-block-rss {
 .main-menu ul li:has(.sub-menu)>a:hover:after,
 .main-menu ul li:has(.mega-menu)>a:hover:after,
 .main-menu ul li.menu-item-has-children>a:hover:after {
-    content: "\f106";
+    content: "▼";
     -webkit-transform: rotate(180deg);
     -ms-transform: rotate(180deg);
     transform: rotate(180deg);
@@ -8161,7 +8161,7 @@ ol.wp-block-rss {
 }
 
 .header-layout1 .menu-item.menu-item-type-custom a:after {
-    content: "\f107";
+    content: "▼";
     display: inline-block;
     position: relative;
     font-family: var(--icon-font);
@@ -8176,7 +8176,7 @@ ol.wp-block-rss {
 
 .header-layout1 .menu-item.menu-item-type-custom a:hover:after,
 .header-layout1 .menu-item.menu-item-type-custom a.active:after {
-    content: "\f106";
+    content: "▼";
     -webkit-transform: rotate(180deg);
     -ms-transform: rotate(180deg);
     transform: rotate(180deg)
@@ -17896,7 +17896,7 @@ table.woocommerce-product-attributes {
 }
 
 .select2-container--default .select2-selection--single .select2-selection__arrow b:before {
-    content: "\f107";
+    content: "▼";
     font-family: var(--icon-font)
 }
 
@@ -28205,7 +28205,7 @@ span.select2-selection.select2-selection--single:focus {
 }
 
 .accordion-card .accordion-button:after {
-    content: "\f107";
+    content: "▼";
     height: 100%;
     width: auto;
     line-height: 1;
@@ -33493,7 +33493,7 @@ span.select2-selection.select2-selection--single:focus {
 }
 
 .main-menu ul.mega-menu .th-mobile-menu ul li a:before {
-    content: '\f105';
+    content: '►';
     font-family: var(--icon-font);
     position: absolute;
     left: 0;
