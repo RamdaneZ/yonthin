@@ -285,25 +285,43 @@ class AdminController extends Controller
 
     public function admin_store(Request $request){
         $request->validate([
-            'username' => ['required','string','max:255'],
+            'username' => ['required','string','max:255','unique:admins'],
             'password' => ['required','string','max:255'],
+            'email' => ['required','string','email','max:255','unique:admins'],
         ]);
+        
+        $superAdmin = false;
+        if($request->superAdmin){
+            $superAdmin = true;
+        }
+        
         Admin::create([
             'username' => $request->username, 
             'password' => $request->password, 
+            'email' => $request->email, 
+            'super_admin' => $superAdmin,
         ]);
+        
         return redirect('admin/admin')->with('success','Admin creé avec succéss');
     }
 
-    public function admin_update(Admin $admin,Request $request){
+    public function admin_update(Admin $admin, Request $request){
         $request->validate([
-            'username' => ['required','string','max:255'],
-            'password' => ['required','string','max:255'],
+            'username' => ['required','string','max:255','unique:admins,username,' . $admin->id],
+            'password' => ['required', 'string', 'max:255'],
+            'email' => ['required','string','email','max:255','unique:admins,email,' . $admin->id],
         ]);
+    
+        $superAdmin = $request->has('superAdmin');
+    
         $admin->update([
-            'username' => $request->username, 
-            'password' => $request->password, 
+            'username' => $request->username,
+            'password' => $request->password,
+            'email' => $request->email,
+            'super_admin' => $superAdmin,
         ]);
-        return redirect('admin/admin')->with('success','Admin modifié avec succéss');
+    
+        return redirect('admin/admin')->with('success', 'Admin modifié avec succès');
     }
+
 }

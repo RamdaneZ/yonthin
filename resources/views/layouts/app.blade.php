@@ -15,20 +15,27 @@
     <!-- Google Fonts (combined request) -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Manrope:wght@200..800&family=Montez&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
     
-    <!-- Bootstrap (Preloaded for faster rendering) -->
-    <link rel="preload" href="{{ asset('assets/css/bootstrap.min.css') }}" as="style">
+    <!-- Bootstrap (Preloaded and Loaded Early) -->
+    <link rel="preload" as="style" href="{{ asset('assets/css/bootstrap.min.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/css/bootstrap.min.css') }}">
     
     <!-- FontAwesome (Deferred to prevent render-blocking) -->
-    <!--<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha512-Fo3rlrZj/k7ujTnHg4CGR2D7kSs0v4LLanw2qksYuRlEzO+tcaEPQogQ0KaoGN26/zrn20ImR1DfuLWnOo7aBA==" crossorigin="anonymous" referrerpolicy="no-referrer"/>-->
+    <!-- Option 1: Use CDN with defer pattern -->
+    <!--
+    <link rel="preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"></noscript>
+    -->
     
-    <!-- Other Stylesheets -->
-    <link rel="stylesheet" href="{{ asset('assets/css/fontawesome.min.css') }}" media="print" onload="this.media='all'">
-    <link rel="stylesheet" href="{{ asset('assets/css/magnific-popup.min.css') }}" media="print" onload="this.media='all'">
-    <link rel="stylesheet" href="{{ asset('assets/css/swiper-bundle.min.css') }}" media="print" onload="this.media='all'">
+    <!-- Option 2: Local FontAwesome with media='print' for non-blocking -->
+    <link rel="stylesheet" href="{{ asset('assets/css/fontawesome.min.css') }}" media="print" onload="this.onload=null;this.media='all'">
     
-    <!-- Language-based Stylesheet -->
+    <!-- Other Stylesheets (Non-critical, lazy-loaded) -->
+    <link rel="stylesheet" href="{{ asset('assets/css/magnific-popup.min.css') }}" media="print" onload="this.onload=null;this.media='all'">
+    <link rel="stylesheet" href="{{ asset('assets/css/swiper-bundle.min.css') }}" media="print" onload="this.onload=null;this.media='all'">
+    
+    <!-- Language-based Stylesheet (Critical, loaded directly) -->
     <link rel="stylesheet" href="{{ asset(App::getLocale() == 'ar' ? 'assets/css/new-style rtl2.css' : 'assets/css/new-style2.css') }}">
+
 
 </head>
 

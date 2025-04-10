@@ -23,7 +23,16 @@
                                         <label class="form-label">Mot de passe</label>
                                         <input name="password" class="form-control" type="text" placeholder="Entrer mot de passe ici" required>
                                     </div>
-                                  <hr>
+                                    <div class="col-lg-12 mb-3">
+                                        <label class="form-label">Adresse email</label>
+                                        <input name="email" class="form-control" type="email" placeholder="Entrer adresse email ici" required>
+                                    </div>
+                                    <div class="form-check ms-2">
+                                      <input name="superAdmin" class="form-check-input" type="checkbox" id="flexCheckDefault">
+                                      <label class="form-check-label" for="flexCheckDefault">
+                                        Super Admin
+                                      </label>
+                                    </div>
                                 </div>
                               </div>
                             </div><br>

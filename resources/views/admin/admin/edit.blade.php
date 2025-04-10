@@ -4,7 +4,7 @@
         <div class="row">
             <div class="col-9">
                 <div class="content-header">
-                    <h2 class="content-title">Modifier administrateur N°{{$admin->id}}</h2>
+                    <h2 class="content-title">Modifier administrateur N{{$admin->id}}</h2>
                 </div>
             </div>
             <div class="col-lg-12">
@@ -22,6 +22,10 @@
                                     <div class="col-lg-6 mb-3">
                                         <label class="form-label">Mot de passe</label>
                                         <input name="password" class="form-control" type="text" placeholder="Entrer mot de passe ici" value="{{$admin->password}}" required>
+                                    </div>
+                                    <div class="col-lg-12 mb-3">
+                                        <label class="form-label">Adresse email</label>
+                                        <input name="email" class="form-control" type="email" placeholder="Entrer adresse email ici" value="{{$admin->email}}" required>
                                     </div>
                                   <hr>
                                 </div>
