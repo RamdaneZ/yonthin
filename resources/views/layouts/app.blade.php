@@ -23,14 +23,14 @@
     <link rel="stylesheet" href="{{ asset('assets/css/swiper-bundle.min.css') }}" media="print" onload="this.onload=null;this.media='all'">
     
     <!-- Language-based Stylesheet (Critical, loaded directly) -->
-    <link rel="stylesheet" href="{{ asset(App::getLocale() == 'ar' ? 'assets/css/new-style rtl2.css' : 'assets/css/new-style2.css') }}">
+    <link rel="stylesheet" href="{{ asset(App::getLocale() == 'ar' ? 'assets/css/new-style rtl2.min.css' : 'assets/css/new-style2.min.css') }}">
 
 
 </head>
 
 <body>
     <div id="preloader" class="preloader">
-        <div class="preloader-inner"><img src="{{ asset('logo-dark.png') }}" alt="YONTHIN" style="width:220px"></div>
+        <div class="preloader-inner"><img src="{{ asset('logo-dark.webp') }}" alt="YONTHIN" style="width:220px"></div>
         <div id="loader" class="th-preloader">
             <div class="animation-preloader">
                 <div class="txt-loading">
@@ -63,7 +63,7 @@
 
     <div class="th-menu-wrapper onepage-nav">
         <div class="th-menu-area text-center"><button class="th-menu-toggle"><i class="fal fa-times"></i></button>
-            <div class="mobile-logo"><a href="{{ url('/') }}"><img src="{{ asset('logo-dark.png') }}" style="width:220px" alt="Yonthin"></a></div>
+            <div class="mobile-logo"><a href="{{ url('/') }}"><img src="{{ asset('logo-dark.webp') }}" style="width:220px" alt="Yonthin"></a></div>
             <div class="th-mobile-menu">
                 <ul>
                     <li><a href="about.html">{{ __('custom.home')}}</a></li>
@@ -88,7 +88,7 @@
                     <div class="row align-items-center justify-content-between">
                         <div class="col-auto">
                             <div class="header-logo">
-                                <a href="{{ url('/') }}"><img src="{{ asset('logo.png') }}" alt="Yonthin" style="width: 170px;height: 85px;transform: scale(1.3);object-fit: contain;"></a>
+                                <a href="{{ url('/') }}"><img src="{{ asset('logo.webp') }}" alt="Yonthin" style="width: 170px;height: 85px;transform: scale(1.3);object-fit: contain;margin-top: -18px;"></a>
                             </div>
                         </div>
                         <div class="col-auto d-flex align-items-center @if(App::getlocale() == "ar") ms-xl-auto @else me-xl-auto @endif">
@@ -171,7 +171,7 @@
                     <div class="col-md-6 col-xl-3">
                         <div class="widget footer-widget">
                             <div class="th-widget-about">
-                                <div class="about-logo"><a href=""><img src="{{ asset('logo.png') }}" alt="yonthin" style="width:150px;transform: scale(1.2);"></a></div>
+                                <div class="about-logo"><a href=""><img src="{{ asset('logo.webp') }}" alt="yonthin" style="width:150px;transform: scale(1.2);"></a></div>
                                 <div class="th-social">
                                     @if($infos->facebook)
                                         <a href="{{ $infos->facebook }}" target="_blank">
