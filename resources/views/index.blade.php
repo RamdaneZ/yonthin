@@ -1,27 +1,53 @@
 
 @extends('layouts.app')
 @section('content')
+<style>
+.th-hero-bg.no-before::before {
+    display: none !important;
+}
+.swiper-pagination-bullets{
+    margin: -20px 0 10px;
+}
+</style>
     <div class="hero-12" id="hero">
-        <div class="swiper th-slider overflow-hidden" id="heroSlide12"
-            data-slider-options='{"effect":"fade","autoHeight":true}'>
+        <div class="swiper th-slider overflow-hidden" id="heroSlide12" data-slider-options='{
+             "effect":"fade",
+             "autoHeight":true,
+             "loop": true,
+             "navigation": {
+                 "nextEl": "#heroSlide12-next",
+                 "prevEl": "#heroSlide12-prev"
+             },
+             "pagination": {
+                 "el": "#heroSlide12-pagination",
+                 "clickable": true
+             }}'>
             <div class="swiper-wrapper">
                 @foreach($sliders as $slider)
+                    @php
+                        $title = App::getLocale() === 'ar' ? $slider->title_ar : (App::getLocale() === 'fr' ? $slider->title_fr : $slider->title_en);
+                        $subtitle = App::getLocale() === 'ar' ? $slider->subtitle_ar : (App::getLocale() === 'fr' ? $slider->subtitle_fr : $slider->subtitle_en);
+                        $button = $slider->url ? (App::getLocale() === 'ar' ? $slider->btnText_ar : (App::getLocale() === 'fr' ? $slider->btnText_fr : $slider->btnText_en)) : null;
+                
+                        $hideBefore = empty($title) && empty($subtitle) && empty($button);
+                    @endphp
+                
                     <div class="swiper-slide">
                         <div class="hero-inner">
-                            <div class="th-hero-bg" data-bg-src="{{ asset('storage/sliders/'.$slider->image) }}"></div>
+                            <div class="th-hero-bg {{ $hideBefore ? 'no-before' : '' }}" data-bg-src="{{ asset('storage/sliders/'.$slider->image) }}"></div>
                             <div class="container">
                                 <div class="hero-style12">
-                                    <h1 class="hero-title text-white" data-ani="slideinup" data-ani-delay="0.4s">
-                                        {{ App::getLocale() === 'ar' ? $slider->title_ar : (App::getLocale() === 'fr' ? $slider->title_fr : $slider->title_en) }}
-                                    </h1>
-                                    <p class="hero-desc" data-ani="slideinup" data-ani-delay="0.5s">
-                                        {{ App::getLocale() === 'ar' ? $slider->subtitle_ar : (App::getLocale() === 'fr' ? $slider->subtitle_fr : $slider->subtitle_en) }}
-                                    </p>
-                                    @if($slider->url)
+                                    @if($title)
+                                        <h1 class="hero-title text-white" data-ani="slideinup" data-ani-delay="0.4s">{{ $title }}</h1>
+                                    @endif
+                
+                                    @if($subtitle)
+                                        <p class="hero-desc" data-ani="slideinup" data-ani-delay="0.5s">{{ $subtitle }}</p>
+                                    @endif
+                
+                                    @if($button)
                                         <div class="btn-group" data-ani="slideinup" data-ani-delay="0.6s">
-                                            <a href="{{$slider->url}}" class="th-btn style1 th-icon">
-                                                {{ App::getLocale() === 'ar' ? $slider->btnText_ar : (App::getLocale() === 'fr' ? $slider->btnText_fr : $slider->btnText_en) }}
-                                            </a>
+                                            <a href="{{$slider->url}}" class="th-btn style1 th-icon">{{ $button }}</a>
                                         </div>
                                     @endif
                                 </div>
@@ -30,9 +56,12 @@
                     </div>
                 @endforeach
             </div>
-        </div><button data-slider-prev="#heroSlide12" class="slider-arrow slider-prev"><img loading="lazy"
-                src="assets/img/icon/right-arrow2.svg" alt=""></button> <button data-slider-next="#heroSlide12"
-            class="slider-arrow slider-next"><img loading="lazy" src="assets/img/icon/left-arrow2.svg" alt=""></button>
+        </div> <!-- Arrows -->
+    <div class="swiper-button-prev" id="heroSlide12-prev" style="color:white"></div>
+    <div class="swiper-button-next" id="heroSlide12-next" style="color:white"></div>
+
+    <!-- Pagination Dots -->
+    <div class="swiper-pagination" id="heroSlide12-pagination"></div>
     </div>
 
     <div class="counter-area space">
@@ -102,7 +131,16 @@
                         <div class="swiper-slide">
                             <div class="category-card single">
                                 <div class="box-img global-img">
-                                    <img loading="lazy" src="{{asset('storage/categories/'.$category->image)}}" loading="lazy" alt="{{ App::getLocale() === 'ar' ? $category->name_ar : (App::getLocale() === 'fr' ? $category->name_fr : $category->name_en) }}">
+                                    @php
+                                        list($width, $height) = getimagesize(storage_path('app/public/categories/' . $category->image));
+                                    @endphp
+                                    <img
+                                        loading="lazy"
+                                        src="{{ asset('storage/categories/' . $category->image) }}"
+                                        width="{{ $width }}"
+                                        height="{{ $height }}"
+                                        alt="{{ App::getLocale() === 'ar' ? $category->name_ar : (App::getLocale() === 'fr' ? $category->name_fr : $category->name_en) }}"
+                                    >
                                 </div>
                                 <h3 class="box-title">
                                     <a href="{{ url('category/'.$category->slug) }}">{{ App::getLocale() === 'ar' ? $category->name_ar : (App::getLocale() === 'fr' ? $category->name_fr : $category->name_en) }}</a>
@@ -130,7 +168,7 @@
                 </div>
                 <div class="col-lg-6">
                     <div class="video-box4">
-                        <a href="https://omo-oss-cdn.thefastfile.com/portal-saas/pg2024042513192795616/cms/vedio/d0889d5d-7998-4747-b107-6f07dabac207.mp4?sign=1743614748-5ac99d7019f3bfa39e068d8a6a4bbce3-0-c391e58a3a7da88fa42dbfb0b5abe59e&Expires=1743614748&Signature=tMTk39rEMY2EogppPp35YGVQJLjRpjsjWqWfj3~iYbb4U22UUeHO0lKGO2fuuO838xI2-JCVCoaXnDbiDaq6VO0mbAB2V8E1qwkZMzzlwjHjSWIO-9-qp-jB36CqSX~noJKOrmJMHEtNfKd91ov3tAdcOgNDLggUlPsKYz2UyZZhRfczuWHEMIBtp3fG7I-pdrwJcyDyNFAnr7lfsu6T~zzp67NRLu3ZBMD1WFn1fXP8BUzz~z200l28egfK8oJuABEGZo4rKSeble38KvGgI5OJw4VhKlgL1RqRWU6DmlSgOLeQkukksnM7w03qLIRE~hL4zsNoES1n3jsOSIt-PA&Key-Pair-Id=KITUBNZ25ERQX" class="play-btn popup-video">
+                        <a href="https://omo-oss-cdn.thefastfile.com/portal-saas/pg2024042513192795616/cms/vedio/d0889d5d-7998-4747-b107-6f07dabac207.mp4?sign=1743614748-5ac99d7019f3bfa39e068d8a6a4bbce3-0-c391e58a3a7da88fa42dbfb0b5abe59e&Expires=1743614748&Signature=tMTk39rEMY2EogppPp35YGVQJLjRpjsjWqWfj3~iYbb4U22UUeHO0lKGO2fuuO838xI2-JCVCoaXnDbiDaq6VO0mbAB2V8E1qwkZMzzlwjHjSWIO-9-qp-jB36CqSX~noJKOrmJMHEtNfKd91ov3tAdcOgNDLggUlPsKYz2UyZZhRfczuWHEMIBtp3fG7I-pdrwJcyDyNFAnr7lfsu6T~zzp67NRLu3ZBMD1WFn1fXP8BUzz~z200l28egfK8oJuABEGZo4rKSeble38KvGgI5OJw4VhKlgL1RqRWU6DmlSgOLeQkukksnM7w03qLIRE~hL4zsNoES1n3jsOSIt-PA&Key-Pair-Id=KITUBNZ25ERQX" class="play-btn popup-video" aria-label="Play video">
                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-play-circle" viewBox="0 0 16 16">
                                 <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16"/>
                                 <path d="M6.271 5.055a.5.5 0 0 1 .52.038l3.5 2.5a.5.5 0 0 1 0 .814l-3.5 2.5A.5.5 0 0 1 6 10.5v-5a.5.5 0 0 1 .271-.445"/>

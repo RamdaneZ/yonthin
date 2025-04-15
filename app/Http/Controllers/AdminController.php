@@ -135,7 +135,9 @@ class AdminController extends Controller
             $manager = new ImageManager(new Driver());
         
             // Convert and encode the image to WebP format
-            $encoded = $manager->read($image->getPathname())->toWebp(60);
+             $encoded = $manager->read($image->getPathname())
+                ->cover(1920, 800) // Crop to exact slider size
+                ->toWebp(60); // 0-100 quality
         
             // Save the WebP image in the storage/public/sliders directory
             Storage::disk('public')->put('sliders/' . $fileName, $encoded->toString()); 
@@ -154,8 +156,12 @@ class AdminController extends Controller
             'btnText_en' => $request->btnText_en,
             'url' => $request->url,
         ]);
-    
-        return back()->with('success', 'Slider créé avec succès');
+        
+        return response()->json([
+            'redirect' => url('admin/homepage/'), // or '/admin/categories'
+            'message' => 'Slider créé avec succès'
+        ]);
+
     }
     
     public function homepage_edit(Slider $slider){
@@ -187,15 +193,16 @@ class AdminController extends Controller
             // Generate a new WebP filename
             $fileName = time() . ".webp";
     
-            // Create an instance of ImageManager with GD driver
             $manager = new ImageManager(new Driver());
-    
-            // Convert and encode the image to WebP format
-            $encoded = $manager->read($image->getPathname())->toWebp(60);
-    
-            // Save WebP image in storage/app/public/sliders
+
+            // Read, crop to slider size, and encode to WebP
+            $encoded = $manager->read($image->getPathname())
+                ->cover(1920, 800) // Crop to exact slider size
+                ->toWebp(60); // 0-100 quality
+        
+            // Store in public disk under 'sliders' folder
             Storage::disk('public')->put('sliders/' . $fileName, $encoded->toString());
-    
+        
             // Delete old image if it exists
             if ($slider->image && Storage::disk('public')->exists('sliders/' . $slider->image)) {
                 Storage::disk('public')->delete('sliders/' . $slider->image);
@@ -216,7 +223,10 @@ class AdminController extends Controller
             'url' => $request->url,
         ]);
     
-        return redirect('admin/homepage')->with('success', 'Slider modifié avec succès');
+        return response()->json([
+            'redirect' => url('admin/homepage/'),
+            'message' => 'Slider modifié avec succès'
+        ]);
     }
     
     

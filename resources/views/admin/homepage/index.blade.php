@@ -77,10 +77,6 @@
                                     <div class="input-upload image-content">
                                         <img src="{{ asset('app/imgs/theme/upload.svg') }}" alt="Image">
                                         <input id="img-input" name="image" class="form-control" type="file" accept="image/*" required>
-                                        <div class="progress">
-                                            <div class="bar" style="background:#75a8d6"></div><br>
-                                            <div class="percent" style="position:absolute;left: 50%;color: white;">0%</div>
-                                        </div>
                                     </div>
                                 </div>
                                 <br>
@@ -151,29 +147,4 @@
     }
 </script>
 
-@endsection
-@section('script')
-<script>
-    $(document).ready(function(){
-        let bar = $(".bar");
-        let percent  = $(".percent");
-
-        $('form').ajaxForm({
-            beforeSend:function(){
-                let percentVal = '0%';
-                bar.width(percentVal);
-                percent.html(percentVal);
-            },
-            uploadProgress:function(event, position, total, percentComplete){
-                var percentVal = percentComplete+'%';
-                bar.width(percentVal);
-                percent.html(percentVal);
-            },
-            complete:function(){
-                window.location.replace("/admin/homepage");
-            }
-        });
-
-    });
-</script>
 @endsection

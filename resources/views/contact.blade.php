@@ -89,9 +89,7 @@
                                     <input type="text" class="form-control" name="address" id="name" placeholder="{{ __('custom.address') }}"> <img src="assets/img/icon/map.svg" alt="">
                                 </div>
                                 <div class="form-group col-12">
-                                    <textarea name="message" id="message" cols="30" rows="3"
-                                        class="form-control" placeholder="{{ __('custom.your_message') }}">
-                                    </textarea> 
+                                    <textarea name="message" id="message" cols="30" rows="3" class="form-control"></textarea> 
                                     <img src="assets/img/icon/chat.svg" alt=""></div>
                                 <div class="form-btn col-12 mt-24">
                                     <button class="th-btn style3">{{ __('custom.send_message') }}<img src="assets/img/icon/plane.svg" alt=""></button>
